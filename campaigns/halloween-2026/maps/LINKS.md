@@ -30,3 +30,4 @@ For printing or viewing on a phone; not for the VTT grid.
 | Ground floor | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_Ground_DM_Sheet.png |
 | Upper floor | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_Upper_DM_Sheet.png |
 | Cellar floor | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_Cellar_DM_Sheet.png |
+| McTavern | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_McTavern_DM_Sheet.png |
