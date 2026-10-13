@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Reveler&#x27;s Stage - Player Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg-main:#0d0a08;--bg-sidebar:#1a1208;--bg-card:#2a1f15;--text-primary:#e8d5a8;--text-secondary:#b8a080;
+--text-dim:#8a7560;--gold:#8b6914;--gold-light:#d4a017;--gold-bright:#f0c040;--blood:#6b0000;--blood-light:#8b1a1a;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg-main);color:var(--text-primary);font-family:'Crimson Text',Georgia,serif;font-size:18px;line-height:1.7}
+h1,h2,h3,.cinzel{font-family:'Cinzel',Georgia,serif;font-weight:600}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-main)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:280px;background:var(--bg-sidebar);border-right:1px solid rgba(139,105,20,.3);z-index:40;display:flex;flex-direction:column;overflow-y:auto}
+.side-head{padding:1.75rem 1.5rem 1rem;border-bottom:1px solid rgba(139,105,20,.2)}
+.side-eyebrow{font-family:'Cinzel',serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold)}
+.side-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:.05em;margin-top:2px}
+.side-sub{font-size:.8rem;color:var(--text-dim);margin-top:.5rem;font-style:italic}
+nav{padding:1rem 0;flex:1}
+.nav-link{display:block;padding:.7rem 1.25rem;color:var(--text-secondary);text-decoration:none;font-size:15px;border-left:2px solid transparent;transition:all .2s}
+.nav-link:hover{color:var(--gold-light);background:rgba(139,105,20,.08)}
+.nav-link.active{color:var(--gold-light);border-left-color:var(--gold-light);background:rgba(139,105,20,.12)}
+.main{margin-left:280px;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}
+.hero{text-align:center;padding:3rem 1rem 2rem}
+.hero h1{font-size:2.2rem;line-height:1.3;letter-spacing:.1em;color:var(--gold-bright);margin:.25rem 0 .75rem;text-shadow:0 0 30px rgba(212,160,23,.25)}
+.hero .sub{color:var(--text-secondary);font-style:italic}
+.hero blockquote{margin:1.5rem auto 0;max-width:36rem;border:0;background:none;color:var(--gold-light);font-style:italic;font-size:1.25rem;padding:0}
+.section-card{background:var(--bg-card);border:1px solid rgba(139,105,20,.2);border-radius:8px;padding:2rem;margin-bottom:1.5rem;scroll-margin-top:1rem}
+.section-card h2{color:var(--gold-light);margin-top:0;font-size:1.6rem;letter-spacing:.06em;border-bottom:1px solid rgba(139,105,20,.25);padding-bottom:.6rem}
+.section-card h3{color:var(--gold-bright);font-size:1.1rem;letter-spacing:.05em;margin:1.6rem 0 .5rem}
+.section-card p,.section-card li{color:var(--text-primary)}
+.section-card strong{color:var(--gold-bright)}
+.section-card em{color:var(--text-secondary)}
+blockquote{border-left:3px solid var(--gold-light);background:rgba(139,105,20,.1);margin:1.5rem 0;padding:1rem 1.5rem;border-radius:0 6px 6px 0}
+blockquote p{margin:.3rem 0}
+.divider{text-align:center;color:var(--gold);font-size:1.2rem;padding:.5rem 0 1.25rem;opacity:.6;letter-spacing:.5em}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+th,td{border:1px solid rgba(139,105,20,.25);padding:.5rem .7rem;text-align:left;vertical-align:top}
+th{background:rgba(139,105,20,.15);color:var(--gold-light);font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.06em}
+tr:nth-child(even) td{background:rgba(0,0,0,.12)}
+.table-scroll{overflow-x:auto}
+.session-preview{border-radius:8px;padding:1.5rem 1.75rem;background:rgba(0,0,0,.18);margin:1.25rem 0;position:relative;overflow:hidden}
+.session-preview::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.session-preview h3{margin-top:.25rem}
+.s1{border:1px solid rgba(122,94,160,.35)}.s1::before{background:linear-gradient(90deg,#7a5ea0,#8b6914)}
+.s2{border:1px solid rgba(196,146,42,.35)}.s2::before{background:linear-gradient(90deg,#c4922a,#d4a017)}
+.s3{border:1px solid rgba(106,138,154,.35)}.s3::before{background:linear-gradient(90deg,#4a6a7a,#6a8a9a)}
+.s4{border:1px solid rgba(139,26,26,.4)}.s4::before{background:linear-gradient(90deg,#6b0000,#8b1a1a)}
+hr{border:0;border-top:1px solid rgba(139,105,20,.2);margin:1.5rem 0}
+.footer{text-align:center;color:var(--text-dim);font-style:italic;padding:2rem 0}
+.mobile-header{display:none}
+/* notes tool */
+.notes-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+.notes-tab{background:transparent;color:var(--text-secondary);border:1px solid rgba(139,105,20,.35);border-radius:4px;padding:.4rem .9rem;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.08em;cursor:pointer}
+.notes-tab.active{background:rgba(139,105,20,.25);color:var(--gold-bright);border-color:var(--gold-light)}
+.notes-pane{display:none}.notes-pane.active{display:block}
+.notes-pane label{display:block;font-family:'Cinzel',serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);margin:1rem 0 .3rem}
+.notes-pane textarea{width:100%;min-height:110px;background:rgba(0,0,0,.25);color:var(--text-primary);border:1px solid rgba(139,105,20,.3);border-radius:6px;padding:.7rem;font-family:'Crimson Text',serif;font-size:16px;resize:vertical}
+.notes-pane textarea:focus{outline:none;border-color:var(--gold-light)}
+.btn{background:var(--gold);color:#fff;border:0;border-radius:4px;padding:.5rem 1.1rem;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;cursor:pointer}
+.btn:hover{background:var(--gold-light);color:#1a1208}
+.notes-status{color:var(--text-dim);font-size:.85rem;margin-left:.75rem;font-style:italic}
+@media(max-width:900px){
+ .sidebar{transform:translateX(-100%);transition:transform .25s}.sidebar.open{transform:none}
+ .main{margin-left:0}.mobile-header{display:flex;align-items:center;position:sticky;top:0;z-index:30;background:var(--bg-sidebar);border-bottom:1px solid rgba(139,105,20,.3);padding:.6rem 1rem}
+ .mobile-header button{background:none;border:0;color:var(--gold-light);font-size:1.5rem;cursor:pointer;margin-right:.75rem}
+ .mobile-header span{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.1em;color:var(--gold-light)}
+ .wrap{padding:1.5rem 1rem 3rem}.hero h1{font-size:1.8rem}.section-card{padding:1.25rem}
+}
+</style></head>
+<body>
+<div class="mobile-header"><button id="menu-btn" type="button" aria-label="Menu">&#9776;</button><span>THE REVELER'S STAGE</span></div>
+<aside class="sidebar" id="sidebar">
+ <div class="side-head"><div class="side-eyebrow">A Player&#x27;s</div><div class="side-title">Companion</div><div class="side-sub">D&amp;D 5e Campaign Guide</div></div>
+ <nav><a class="nav-link" href="#welcome-to-the-stage">Welcome to the Stage</a><a class="nav-link" href="#your-character">Your Character</a><a class="nav-link" href="#session-previews">Session Previews</a><a class="nav-link" href="#leveling-progression">Leveling &amp; Progression</a><a class="nav-link" href="#rules-quick-reference">Rules Quick Reference</a><a class="nav-link" href="#session-notes">Session Notes</a><a class="nav-link" href="#safety-table-expectations">Safety &amp; Table Expectations</a></nav>
+</aside>
+<div class="main"><div class="wrap">
+ <header class="hero"><h1>The Reveler&#x27;s Stage: A Player&#x27;s Companion</h1><div class="sub">D&amp;D 5e Campaign Guide. Audience: players. Spoiler-free.</div><blockquote>&quot;Every seat is taken. The lights are dimming.&quot;</blockquote></header>
+ <section class="section-card" id="welcome-to-the-stage"><h2>Welcome to the Stage</h2><p><strong>Something found you. It has been waiting a very long time.</strong></p>
+<p>You don't know how you got here. You don't know the others standing next to you. What you do know, and this is the part that should unsettle you, is that something does know you. It knows the shape of what you fear. It knows the sound of your grief. It knows what you value, and what you would sacrifice to protect it. It has been watching for some time.</p>
+<p>And now, at last, it has made its move.</p>
+<p>Welcome to The Reveler's Stage. We do hope you enjoy the performance.</p>
+<h3>Campaign at a Glance</h3>
+<div class="table-scroll"><table>
+
+<tbody>
+<tr>
+<td><strong>System</strong></td>
+<td>D&amp;D 5e (monsters use the 2024 rules; characters can use 2014 or 2024 options)</td>
+</tr>
+<tr>
+<td><strong>Players</strong></td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>Sessions</strong></td>
+<td>4 × ~3 hours</td>
+</tr>
+<tr>
+<td><strong>Tone</strong></td>
+<td>Horror, with a dark sense of humor</td>
+</tr>
+<tr>
+<td><strong>Starting level</strong></td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Ending level</strong></td>
+<td>7</td>
+</tr>
+<tr>
+<td><strong>Themes</strong></td>
+<td>Identity · Connection · Fear · What We Carry</td>
+</tr>
+</tbody>
+</table></div>
+<h3>What Kind of Campaign Is This?</h3>
+<p>The Reveler's Stage is a Halloween horror campaign. It is genuinely scary in places, and the dark humor that shows up now and then is there to make the dread hit harder. You will meet things designed to unsettle you, and a few things that are absurd, campy, and darkly funny. The goal is not pure survival horror. It is a story about six strangers becoming something more than strangers, under the worst possible circumstances.</p>
+<h3>What Makes This Different?</h3>
+<p>This is not a traditional dungeon crawl. There are no towns to shop in, no guilds to join, and no political intrigue to navigate between sessions. Every session drops you directly into a new nightmare. You will not always have context. That is intentional. Trust your instincts, trust each other, and pay attention, because details matter.</p>
+<p>Expect puzzles. They are not there to stall you. Each one is built to make you feel something specific: isolation, suspicion, urgency, resolve. If a puzzle makes your stomach drop, it is working.</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="your-character"><h2>Your Character</h2><p>You will play the <strong>same character for all four sessions</strong>: one species, one class, one subclass, growing from level 3 to level 7. Your character can be a conventional fantasy adventurer, or someone who is close to who you are. That is your choice, and both work well.</p>
+<p>You do not need to know the other characters. You do not need to like them, agree with them, or share their morals. <strong>Any alignment is welcome, including evil.</strong> What matters is that your character has a reason to stay in the room, and that you are willing to let this story pull you toward the other four, even if only grudgingly.</p>
+<h3>Character Creation Guidelines</h3>
+<p><strong>Level.</strong> Start at Level 3. You will gain one level at the end of each session, reaching Level 7 before the final confrontation.</p>
+<p><strong>Class and subclass.</strong> Choose any official D&amp;D 5e class, from the 2014 or 2024 books. At Level 3 you pick your subclass, so you will need one at the start. If you are not sure an option is allowed, ask the DM first.</p>
+<p><strong>Species.</strong> Any official D&amp;D 5e species, from the 2014 or 2024 books.</p>
+<p><strong>Background.</strong> Any official D&amp;D 5e background. Choose one that tells us how your character moves through the world.</p>
+<p><strong>Ability scores.</strong> Use Standard Array (15, 14, 13, 12, 10, 8) or Point Buy. No rolling. This keeps things fair across four sessions.</p>
+<p><strong>Personality.</strong> Fill in Trait, Ideal, Bond, and Flaw. Make them specific. Vague answers give this campaign nothing to work with.</p>
+<p><strong>Name.</strong> Any name you like.</p>
+<p><strong>Alignment.</strong> Any. If your character is wicked, make them wicked in a way that is interesting to play with others.</p>
+<h3>A Note on Equipment</h3>
+<p>You will start with your standard class equipment. Be careful with it. Some things in this campaign collect.</p>
+<h3>What It Knows About You (Optional)</h3>
+<p>Something has been watching you. Before Session 1, send the DM <strong>privately</strong> (not to the group) three short lines about your character:</p>
+<ol>
+<li>One thing your character fears.</li>
+<li>One thing your character values more than they admit.</li>
+<li>One thing your character would sacrifice to protect.</li>
+</ol>
+<p>The DM will use these to shape what happens to you. You do not need to answer. If you skip it, the DM will make something up, and the DM is not gentle.</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="session-previews"><h2>Session Previews</h2><p>Four sessions. Four very different nightmares. What follows is what you know going in, which is only as much as your character would know. Each session will reveal far more than what is listed here.</p>
+<div class="session-preview s1"><h3>Session 1: "The Inheritance"</h3>
+<p><strong>Gothic haunted house · Level 3 · Isolation</strong></p>
+<p>You wake in a dining room you have never seen, seated at a table with strangers. A man in an immaculate suit is speaking about a will. Outside, a storm has made the roads impassable. The house is very large. The lights have just gone out. Somewhere in this building, something is moving. You do not know its name. It knows yours.</p>
+<p><strong>What to expect:</strong> exploration, investigation, NPCs with secrets, environmental puzzles, atmospheric dread, moments of dark comedy.</p>
+<p><em>Pay attention to the fireplaces.</em></p>
+</div><div class="session-preview s2"><h3>Session 2: "Harvest of the Hollow"</h3>
+<p><strong>Folk horror · Level 4 · Paranoia</strong></p>
+<p>You are walking into a village that is very pleased to see you. The harvest festival begins at sundown. The decorations are beautiful. The food smells extraordinary. The people are so, so welcoming. Something is wrong with the food. Something is wrong with the people. Something is very wrong with the thing at the center of the village green. You have arrived just in time, they say. Just in time for what, exactly?</p>
+<p><strong>What to expect:</strong> social encounters, a ticking clock, multiple solutions to one problem, folk horror atmosphere, and at least one moment that is simultaneously terrifying and deeply funny.</p>
+<p><em>Listen to what people don't say as carefully as what they do.</em></p>
+</div><div class="session-preview s3"><h3>Session 3: "No Signal"</h3>
+<p><strong>Sci-fi creature feature · Level 5 · Hopelessness</strong></p>
+<p>You wake to alarms. You have been asleep for 18 months. There is an AI that seems very glad you're awake, a cook who has survived alone for reasons he cannot fully explain, and a station commander who is managing the situation with impressive professionalism given that something appears to have eaten most of the crew. The evacuation shuttle arrives in 14 hours. There are more people than there are seats.</p>
+<p><strong>What to expect:</strong> a paranoia mechanic, creature encounters, a ticking clock with real consequences, NPC relationships built under pressure, and decisions that matter.</p>
+<p><em>Not everyone here is who they appear to be. Including, possibly, you.</em></p>
+</div><div class="session-preview s4"><h3>Session 4: "The Grand Theater"</h3>
+<p><strong>Psychological dreamscape · Level 7 · Surrender, or something else</strong></p>
+<p>This time there is no new nightmare to wake into. You are standing on a stage. There are seats. The seats are not empty. Something is in the front row. It is very pleased with your performance so far. Now it wants to finish the show. What happens next is, for the first time, entirely up to you.</p>
+<p><strong>What to expect:</strong> everything comes together. Revelations. Choices with weight. The biggest fight of the campaign. And something that no stat block can measure.</p>
+<p><em>Say the true thing. It matters more than the roll.</em></p></div></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="leveling-progression"><h2>Leveling &amp; Progression</h2><p>You will not visit a trainer. You will not find a mystical font of power. Your growth happens because of what you survive and what you choose. Each level gained should feel earned.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Milestone</th>
+<th>Level</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Campaign start</td>
+<td>3</td>
+<td>Character creation complete; subclass chosen</td>
+</tr>
+<tr>
+<td>End of Session 1</td>
+<td>4</td>
+<td>You survived the night</td>
+</tr>
+<tr>
+<td>End of Session 2</td>
+<td>5</td>
+<td>You stopped something that didn't want to be stopped</td>
+</tr>
+<tr>
+<td>End of Session 3</td>
+<td>6</td>
+<td>You made it onto the shuttle</td>
+</tr>
+<tr>
+<td>Start of Session 4</td>
+<td>7</td>
+<td>The sets fall away. Everything you've survived catches up with you</td>
+</tr>
+</tbody>
+</table></div>
+<h3>What to Do When You Level Up</h3>
+<p>At the end of each session, level up before the next one begins. Choose your new features, update your HP, and note any new spell slots or abilities. Come to the next session ready to play at your new level. If you are unsure what to take at a given level, talk to your DM. This campaign has been designed with your progression in mind.</p>
+<h3>What Each Class Gains, Levels 3 to 7</h3>
+<p>Because you keep one build for the whole campaign, here is what to expect. This is based on the 2024 Player's Handbook class tables, so it does not include the Artificer, and some details differ in the 2014 versions of a class. <strong>Your character sheet is the source of truth.</strong> Many features also grow in strength or number of uses as you level, so check your own class table for the details.</p>
+<p>At Level 3, every class chooses a <strong>subclass</strong>. At Level 4, every class gets an <strong>Ability Score Improvement</strong> (ASI), which you can spend on ability scores or on a feat. Most classes get a second subclass feature at Level 6. <strong>Fighters, Paladins, and Rangers</strong> get theirs at Level 7 instead, and <strong>Rogues</strong> get no further subclass feature in this range. <strong>Fighters</strong> also get a second ASI at Level 6.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Level 3</th>
+<th>Level 4</th>
+<th>Level 5</th>
+<th>Level 6</th>
+<th>Level 7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Barbarian</strong></td>
+<td>Subclass, Primal Knowledge</td>
+<td>ASI</td>
+<td>Extra Attack, Fast Movement</td>
+<td>Subclass feature</td>
+<td>Feral Instinct, Instinctive Pounce</td>
+</tr>
+<tr>
+<td><strong>Bard</strong></td>
+<td>Subclass (2nd-level spells)</td>
+<td>ASI</td>
+<td>Font of Inspiration (3rd-level spells)</td>
+<td>Subclass feature</td>
+<td>Countercharm (4th-level spells)</td>
+</tr>
+<tr>
+<td><strong>Cleric</strong></td>
+<td>Subclass (2nd-level spells)</td>
+<td>ASI</td>
+<td>Sear Undead (3rd-level spells)</td>
+<td>Subclass feature</td>
+<td>Blessed Strikes (4th-level spells)</td>
+</tr>
+<tr>
+<td><strong>Druid</strong></td>
+<td>Subclass (2nd-level spells)</td>
+<td>ASI</td>
+<td>Wild Resurgence (3rd-level spells)</td>
+<td>Subclass feature</td>
+<td>Elemental Fury (4th-level spells)</td>
+</tr>
+<tr>
+<td><strong>Fighter</strong></td>
+<td>Subclass</td>
+<td>ASI</td>
+<td>Extra Attack, Tactical Shift</td>
+<td>ASI</td>
+<td>Subclass feature</td>
+</tr>
+<tr>
+<td><strong>Monk</strong></td>
+<td>Deflect Attacks, Subclass</td>
+<td>ASI, Slow Fall</td>
+<td>Extra Attack, Stunning Strike</td>
+<td>Empowered Strikes, Subclass feature</td>
+<td>Evasion</td>
+</tr>
+<tr>
+<td><strong>Paladin</strong></td>
+<td>Channel Divinity, Divine Sense, Subclass</td>
+<td>ASI</td>
+<td>Extra Attack, Faithful Steed (2nd-level spells)</td>
+<td>Aura of Protection</td>
+<td>Subclass feature</td>
+</tr>
+<tr>
+<td><strong>Ranger</strong></td>
+<td>Subclass</td>
+<td>ASI</td>
+<td>Extra Attack (2nd-level spells)</td>
+<td>Roving</td>
+<td>Subclass feature</td>
+</tr>
+<tr>
+<td><strong>Rogue</strong></td>
+<td>Subclass, Steady Aim</td>
+<td>ASI</td>
+<td>Cunning Strike, Uncanny Dodge</td>
+<td>Expertise</td>
+<td>Evasion, Reliable Talent</td>
+</tr>
+<tr>
+<td><strong>Sorcerer</strong></td>
+<td>Subclass (2nd-level spells)</td>
+<td>ASI</td>
+<td>Sorcerous Restoration (3rd-level spells)</td>
+<td>Subclass feature</td>
+<td>Sorcery Incarnate (4th-level spells)</td>
+</tr>
+<tr>
+<td><strong>Warlock</strong></td>
+<td>Subclass (2nd-level Pact slots)</td>
+<td>ASI</td>
+<td>3rd-level Pact slots</td>
+<td>Subclass feature</td>
+<td>4th-level Pact slots</td>
+</tr>
+<tr>
+<td><strong>Wizard</strong></td>
+<td>Subclass (2nd-level spells)</td>
+<td>ASI</td>
+<td>Memorize Spell (3rd-level spells)</td>
+<td>Subclass feature</td>
+<td>4th-level spells</td>
+</tr>
+</tbody>
+</table></div>
+<h3>A Note on Death</h3>
+<p>This campaign uses standard death save rules. Dropping to 0 HP is not the end, but it is not safe. Your allies can stabilize you. Healing spells can bring you back. What cannot be undone is what happens while you are down. Play smart. Look out for each other. The campaign rewards teamwork in ways that will become clear.</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="rules-quick-reference"><h2>Rules Quick Reference</h2><p>A fast-reference guide to the rules that come up most in this campaign, summarized from the 2024 rules. Where your character sheet uses the 2014 version of a rule, your sheet wins. Not a complete rulebook, just the things you are most likely to need.</p>
+<h3>Death Saves</h3>
+<p>When you drop to 0 HP, you fall unconscious and start making Death Saving Throws at the start of each of your turns. Roll a d20. 10 or higher is a success. 9 or lower is a failure. 3 successes means you are stable. 3 failures means you are dead. Rolling a 1 counts as 2 failures. Rolling a 20 means you regain 1 HP and regain consciousness.</p>
+<h3>Conditions</h3>
+<ul>
+<li><strong>Frightened:</strong> Disadvantage on ability checks and attack rolls while the source of your fear is in line of sight. You can't willingly move closer to it.</li>
+<li><strong>Paralyzed:</strong> Incapacitated, speed 0. You automatically fail Strength and Dexterity saves. Attacks against you have advantage, and a hit from within 5 feet is a critical hit.</li>
+<li><strong>Stunned:</strong> Incapacitated. You automatically fail Strength and Dexterity saves. Attacks against you have advantage.</li>
+<li><strong>Charmed:</strong> You can't attack the charmer or target them with harmful abilities. The charmer has advantage on social checks against you.</li>
+<li><strong>Incapacitated:</strong> You can't take actions, bonus actions, or reactions. Your concentration is broken, and you can't speak.</li>
+</ul>
+<h3>Concentration</h3>
+<p>Many spells require concentration. You can only concentrate on one spell at a time. When you take damage, make a Constitution save. The DC is 10 or half the damage taken, whichever is higher. A failure ends the spell.</p>
+<h3>Bonus Actions &amp; Reactions</h3>
+<p>You get one bonus action and one reaction per round.
+- <strong>Bonus actions:</strong> certain class features, specific spells, and some weapon properties.
+- <strong>Reactions:</strong> opportunity attacks, certain class features and spells (Shield, Counterspell), and readied actions.</p>
+<h3>Skill Checks</h3>
+<p>Roll a d20 plus the relevant modifier against a DC set by the DM. Common DCs: 5 (very easy), 10 (easy), 15 (medium), 20 (hard), 25 (very hard), 30 (nearly impossible). An ally can help you with the Help action.</p>
+<h3>Heroic Inspiration</h3>
+<p>The DM awards it for excellent roleplay, clever solutions, or genuine character moments. Spend it to <strong>reroll any one die</strong> you just rolled, and keep the new result. (Under the 2014 rules, Inspiration instead gives advantage on one roll.) You either have it or you don't. It doesn't stack.</p>
+<h3>Action Economy (Per Turn)</h3>
+<ul>
+<li><strong>1 Action:</strong> Attack, Dash, Disengage, Dodge, Help, Hide, Influence, Magic (casting a spell), Ready, Search, Study, or Utilize</li>
+<li><strong>1 Bonus Action:</strong> if a feature grants one</li>
+<li><strong>Movement:</strong> up to your speed</li>
+<li><strong>1 Reaction:</strong> on anyone's turn, if triggered</li>
+<li><strong>Free:</strong> speak briefly, drop an item, interact with one object</li>
+</ul>
+<h3>Resting</h3>
+<ul>
+<li><strong>Short rest (1 hour):</strong> spend Hit Dice to regain HP (roll the Hit Die and add your Constitution modifier for each die).</li>
+<li><strong>Long rest (8 hours):</strong> regain all HP, half your maximum Hit Dice, all spell slots, and most class features.</li>
+<li><strong>Note:</strong> the DM will tell you when rests are available. In a horror scenario, full long rests may be rare.</li>
+</ul></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="session-notes"><h2>Session Notes</h2>
+<p>Track what you discover. In this campaign, details matter. Notes save in this browser as you type.</p>
+<div class="notes-tabs" id="notes-tabs"></div>
+<div id="notes-panes"></div>
+<p><button class="btn" id="notes-export" type="button">Export all notes (.md)</button><span class="notes-status" id="notes-status"></span></p>
+<script>
+(function(){
+  var SESSIONS=[["1","The Inheritance"],["2","Harvest of the Hollow"],["3","No Signal"],["4","The Grand Theater"]];
+  var FIELDS=["General notes","NPCs met","Mysteries and open questions","Things that felt important"];
+  var KEY="reveler-notes-v1", data={}, status=document.getElementById("notes-status");
+  try{data=JSON.parse(localStorage.getItem(KEY)||"{}");}catch(e){data={};}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(data));status.textContent="Saved";}catch(e){status.textContent="Could not save in this browser. Use Export.";}}
+  var tabs=document.getElementById("notes-tabs"), panes=document.getElementById("notes-panes"), timer=null;
+  SESSIONS.forEach(function(s,i){
+    var b=document.createElement("button");b.type="button";b.className="notes-tab"+(i===0?" active":"");b.textContent="Session "+s[0];tabs.appendChild(b);
+    var p=document.createElement("div");p.className="notes-pane"+(i===0?" active":"");
+    var h=document.createElement("h3");h.textContent=s[1];p.appendChild(h);
+    FIELDS.forEach(function(f,j){
+      var id="s"+s[0]+"f"+j,l=document.createElement("label");l.textContent=f;l.htmlFor=id;
+      var t=document.createElement("textarea");t.id=id;t.value=data[id]||"";
+      t.addEventListener("input",function(){data[id]=t.value;status.textContent="Saving...";clearTimeout(timer);timer=setTimeout(save,400);});
+      p.appendChild(l);p.appendChild(t);
+    });
+    panes.appendChild(p);
+    b.addEventListener("click",function(){
+      Array.prototype.forEach.call(tabs.children,function(x){x.classList.remove("active");});
+      Array.prototype.forEach.call(panes.children,function(x){x.classList.remove("active");});
+      b.classList.add("active");p.classList.add("active");
+    });
+  });
+  document.getElementById("notes-export").addEventListener("click",function(){
+    var out="# The Reveler's Stage: My Notes\n\n";
+    SESSIONS.forEach(function(s){
+      out+="## Session "+s[0]+": "+s[1]+"\n\n";
+      FIELDS.forEach(function(f,j){out+="### "+f+"\n\n"+(data["s"+s[0]+"f"+j]||"")+"\n\n";});
+    });
+    var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([out],{type:"text/markdown"}));
+    a.download="Revelers_Stage_My_Notes.md";document.body.appendChild(a);a.click();document.body.removeChild(a);
+  });
+})();
+</script>
+</section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="safety-table-expectations"><h2>Safety &amp; Table Expectations</h2><p>This campaign deals with themes of fear, loss, isolation, paranoia, and despair. That is the genre. It is also a game played by real people at a real table, and real people matter more than any story.</p>
+<h3>The X-Card</h3>
+<p>This table uses the X-Card safety tool. If at any point during play something makes you uncomfortable (a theme, a scene, a direction the story is going), tap or hold up the X-Card, or simply say "X." No explanation required. No questions asked. The scene changes. This is not a sign of weakness. It is a sign of a healthy table.</p>
+<h3>Lines &amp; Veils</h3>
+<p>Before Session 1, the DM will discuss Lines and Veils as a group.</p>
+<ul>
+<li><strong>Lines</strong> are content that will not appear in this campaign at all.</li>
+<li><strong>Veils</strong> are content that may occur but will be handled off-screen or at a high level, never depicted in detail.</li>
+</ul>
+<p>These are set by the group together. Everyone's lines are valid.</p>
+<h3>Open Door Policy</h3>
+<p>You may step away from the table at any time. You do not need to explain why. The game will wait.</p>
+<h3>Table Expectations</h3>
+<ul>
+<li><strong>Be present.</strong> Phones away during scenes that matter.</li>
+<li><strong>Take care of each other,</strong> in character and out.</li>
+<li><strong>The horror is the point.</strong> Lean in, but know your limits.</li>
+<li><strong>The dark humor is also the point.</strong> Laugh when it's funny.</li>
+<li><strong>Say the true thing.</strong> The campaign rewards genuine roleplay.</li>
+<li><strong>Look out for your party,</strong> mechanically and emotionally.</li>
+<li><strong>If you miss a session, nothing bad happens to your character.</strong> See below.</li>
+<li><strong>Characters can clash, but the table stays kind.</strong> Conflict between characters is fine. Using your character to hurt another player is not.</li>
+</ul>
+<h3>If You Miss a Session</h3>
+<p>Life happens. Tell the DM as early as you can. On the night, your character steps offstage: they are safe, they cannot be harmed or targeted, and they level up with the party. When you return, your character comes back with a short note about something they saw while away. Missing a game costs you nothing in the story.</p>
+<h3>A Note on Tone</h3>
+<p>This campaign will have scary moments. It will also have moments that are genuinely, absurdly funny: a suit of armor collecting your boots, a village elder baffled that no one is eating his eye-soup, a space station AI with a crush. Let both exist. The best Halloween experiences are the ones that make you scream and laugh in the same breath.</p>
+<hr /></section>
+ <div class="footer">The Reveler&#x27;s Stage · A D&amp;D 5e Campaign · For the Players</div>
+</div></div>
+
+<script>
+(function(){
+  var links=document.querySelectorAll('.nav-link'), side=document.getElementById('sidebar');
+  var map={};links.forEach(function(l){map[l.getAttribute('href').slice(1)]=l;});
+  var cards=Array.prototype.slice.call(document.querySelectorAll('.section-card'));
+  function setActive(){
+    var cur=cards[0], line=window.innerHeight*0.3;
+    cards.forEach(function(c){if(c.getBoundingClientRect().top<=line)cur=c;});
+    links.forEach(function(l){l.classList.remove('active');});
+    if(cur&&map[cur.id])map[cur.id].classList.add('active');
+  }
+  window.addEventListener('scroll',setActive,{passive:true});setActive();
+  var btn=document.getElementById('menu-btn');
+  if(btn)btn.addEventListener('click',function(){side.classList.toggle('open');});
+  links.forEach(function(l){l.addEventListener('click',function(){side.classList.remove('open');});});
+})();
+</script>
+
+</body></html>

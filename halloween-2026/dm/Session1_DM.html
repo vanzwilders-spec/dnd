@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Session 1: The Inheritance (DM)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg-main:#0d0a08;--bg-sidebar:#1a1208;--bg-card:#2a1f15;--text-primary:#e8d5a8;--text-secondary:#b8a080;
+--text-dim:#8a7560;--gold:#8b6914;--gold-light:#d4a017;--gold-bright:#f0c040;--blood:#6b0000;--blood-light:#8b1a1a;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg-main);color:var(--text-primary);font-family:'Crimson Text',Georgia,serif;font-size:18px;line-height:1.7}
+h1,h2,h3,.cinzel{font-family:'Cinzel',Georgia,serif;font-weight:600}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-main)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:280px;background:var(--bg-sidebar);border-right:1px solid rgba(139,105,20,.3);z-index:40;display:flex;flex-direction:column;overflow-y:auto}
+.side-head{padding:1.75rem 1.5rem 1rem;border-bottom:1px solid rgba(139,105,20,.2)}
+.side-eyebrow{font-family:'Cinzel',serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold)}
+.side-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:.05em;margin-top:2px}
+.side-sub{font-size:.8rem;color:var(--text-dim);margin-top:.5rem;font-style:italic}
+nav{padding:1rem 0;flex:1}
+.nav-link{display:block;padding:.7rem 1.25rem;color:var(--text-secondary);text-decoration:none;font-size:15px;border-left:2px solid transparent;transition:all .2s}
+.nav-link:hover{color:var(--gold-light);background:rgba(139,105,20,.08)}
+.nav-link.active{color:var(--gold-light);border-left-color:var(--gold-light);background:rgba(139,105,20,.12)}
+.main{margin-left:280px;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}
+.hero{text-align:center;padding:3rem 1rem 2rem}
+.hero h1{font-size:2.2rem;line-height:1.3;letter-spacing:.1em;color:var(--gold-bright);margin:.25rem 0 .75rem;text-shadow:0 0 30px rgba(212,160,23,.25)}
+.hero .sub{color:var(--text-secondary);font-style:italic}
+.hero blockquote{margin:1.5rem auto 0;max-width:36rem;border:0;background:none;color:var(--gold-light);font-style:italic;font-size:1.25rem;padding:0}
+.section-card{background:var(--bg-card);border:1px solid rgba(139,105,20,.2);border-radius:8px;padding:2rem;margin-bottom:1.5rem;scroll-margin-top:1rem}
+.section-card h2{color:var(--gold-light);margin-top:0;font-size:1.6rem;letter-spacing:.06em;border-bottom:1px solid rgba(139,105,20,.25);padding-bottom:.6rem}
+.section-card h3{color:var(--gold-bright);font-size:1.1rem;letter-spacing:.05em;margin:1.6rem 0 .5rem}
+.section-card p,.section-card li{color:var(--text-primary)}
+.section-card strong{color:var(--gold-bright)}
+.section-card em{color:var(--text-secondary)}
+blockquote{border-left:3px solid var(--gold-light);background:rgba(139,105,20,.1);margin:1.5rem 0;padding:1rem 1.5rem;border-radius:0 6px 6px 0}
+blockquote p{margin:.3rem 0}
+.divider{text-align:center;color:var(--gold);font-size:1.2rem;padding:.5rem 0 1.25rem;opacity:.6;letter-spacing:.5em}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+th,td{border:1px solid rgba(139,105,20,.25);padding:.5rem .7rem;text-align:left;vertical-align:top}
+th{background:rgba(139,105,20,.15);color:var(--gold-light);font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.06em}
+tr:nth-child(even) td{background:rgba(0,0,0,.12)}
+.table-scroll{overflow-x:auto}
+.session-preview{border-radius:8px;padding:1.5rem 1.75rem;background:rgba(0,0,0,.18);margin:1.25rem 0;position:relative;overflow:hidden}
+.session-preview::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.session-preview h3{margin-top:.25rem}
+.s1{border:1px solid rgba(122,94,160,.35)}.s1::before{background:linear-gradient(90deg,#7a5ea0,#8b6914)}
+.s2{border:1px solid rgba(196,146,42,.35)}.s2::before{background:linear-gradient(90deg,#c4922a,#d4a017)}
+.s3{border:1px solid rgba(106,138,154,.35)}.s3::before{background:linear-gradient(90deg,#4a6a7a,#6a8a9a)}
+.s4{border:1px solid rgba(139,26,26,.4)}.s4::before{background:linear-gradient(90deg,#6b0000,#8b1a1a)}
+hr{border:0;border-top:1px solid rgba(139,105,20,.2);margin:1.5rem 0}
+.footer{text-align:center;color:var(--text-dim);font-style:italic;padding:2rem 0}
+.mobile-header{display:none}
+/* notes tool */
+.notes-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+.notes-tab{background:transparent;color:var(--text-secondary);border:1px solid rgba(139,105,20,.35);border-radius:4px;padding:.4rem .9rem;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.08em;cursor:pointer}
+.notes-tab.active{background:rgba(139,105,20,.25);color:var(--gold-bright);border-color:var(--gold-light)}
+.notes-pane{display:none}.notes-pane.active{display:block}
+.notes-pane label{display:block;font-family:'Cinzel',serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);margin:1rem 0 .3rem}
+.notes-pane textarea{width:100%;min-height:110px;background:rgba(0,0,0,.25);color:var(--text-primary);border:1px solid rgba(139,105,20,.3);border-radius:6px;padding:.7rem;font-family:'Crimson Text',serif;font-size:16px;resize:vertical}
+.notes-pane textarea:focus{outline:none;border-color:var(--gold-light)}
+.btn{background:var(--gold);color:#fff;border:0;border-radius:4px;padding:.5rem 1.1rem;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;cursor:pointer}
+.btn:hover{background:var(--gold-light);color:#1a1208}
+.notes-status{color:var(--text-dim);font-size:.85rem;margin-left:.75rem;font-style:italic}
+@media(max-width:900px){
+ .sidebar{transform:translateX(-100%);transition:transform .25s}.sidebar.open{transform:none}
+ .main{margin-left:0}.mobile-header{display:flex;align-items:center;position:sticky;top:0;z-index:30;background:var(--bg-sidebar);border-bottom:1px solid rgba(139,105,20,.3);padding:.6rem 1rem}
+ .mobile-header button{background:none;border:0;color:var(--gold-light);font-size:1.5rem;cursor:pointer;margin-right:.75rem}
+ .mobile-header span{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.1em;color:var(--gold-light)}
+ .wrap{padding:1.5rem 1rem 3rem}.hero h1{font-size:1.8rem}.section-card{padding:1.25rem}
+}
+</style></head>
+<body>
+<div class="mobile-header"><button id="menu-btn" type="button" aria-label="Menu">&#9776;</button><span>THE REVELER'S STAGE</span></div>
+<aside class="sidebar" id="sidebar">
+ <div class="side-head"><div class="side-eyebrow">DM only</div><div class="side-title">Session 1</div><div class="side-sub">The Inheritance</div></div>
+ <nav><a class="nav-link" href="#0-one-page-summary">0. One-page summary</a><a class="nav-link" href="#1-setup-and-session-0-20-minutes">1. Setup and Session 0 (20 minutes)</a><a class="nav-link" href="#2-the-house">2. The house</a><a class="nav-link" href="#3-the-night-clock-new">3. The Night Clock [NEW]</a><a class="nav-link" href="#4-act-1-the-dining-room-25-min">4. Act 1: The Dining Room (25 min)</a><a class="nav-link" href="#5-act-2-exploring-50-min">5. Act 2: Exploring (50 min)</a><a class="nav-link" href="#6-the-flues-the-cross-room-puzzle-new">6. The Flues: the cross-room puzzle [NEW]</a><a class="nav-link" href="#7-act-3-the-cellar-40-min">7. Act 3: The Cellar (40 min)</a><a class="nav-link" href="#8-climax-harwick-45-min">8. Climax: Harwick (45 min)</a><a class="nav-link" href="#9-the-grounds-the-edge-of-the-world-decided">9. The grounds: the edge of the world [DECIDED]</a><a class="nav-link" href="#10-dawn-and-the-session-2-hook">10. Dawn and the Session 2 hook</a><a class="nav-link" href="#11-stage-fill-and-the-level-up">11. Stage Fill and the level-up</a><a class="nav-link" href="#12-if-a-player-is-absent">12. If a player is absent</a><a class="nav-link" href="#13-spotlight-checklist">13. Spotlight checklist</a><a class="nav-link" href="#14-open-for-you">14. Open for you</a></nav>
+</aside>
+<div class="main"><div class="wrap">
+ <header class="hero"><h1>Session 1, &quot;The Inheritance&quot;: DM Script</h1><div class="sub">DM only. Ravensmoor Manor, midnight to dawn. Six level-3 characters. Despair: Isolation. Friday, October 16, 2026. About 3 hours including a 20-minute Session 0.</div><blockquote></blockquote></header>
+ <section class="section-card" id="0-one-page-summary"><h2>0. One-page summary</h2><ul>
+<li>Six strangers wake at a dining table. Solicitor Ashford reads a will: the estate goes to "he who endures." The lights go out. The storm has taken the bridge. Nobody leaves.</li>
+<li>Eight hearths keep the house's ghosts at bay. <strong>The Night Clock</strong> puts them out in waves. The <strong>Dining Room hearth never goes out</strong>: it is the one refuge. [DECIDED]</li>
+<li><strong>Harwick</strong>, the grieving butler, wants to "preserve" the guests by dragging them to the cellar. He cannot enter a room with a lit hearth.</li>
+<li>Three ways to end the night: <strong>Fire</strong> (light every hearth from the Furnace Room), <strong>Release</strong> (free Harwick from service), or <strong>Break</strong> (drive him off in a non-lethal fight). [DECIDED]</li>
+<li>Free <strong>Luna</strong> by finding her name and serving her the dinner she never served. [DECIDED]</li>
+<li>The <strong>Revenant Hounds</strong> are a silence puzzle, <strong>the Collector</strong> is a comic loss, <strong>the Twins</strong> play games.</li>
+<li>Mordax appears twice and never fights.</li>
+<li>Dawn. Level 4. A road into Ashvale.</li>
+</ul></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="1-setup-and-session-0-20-minutes"><h2>1. Setup and Session 0 (20 minutes)</h2><p><strong>Before play.</strong> Lines &amp; Veils and the X-card. Name these for the table: ghost children, grief, preserved bodies, a figure who drags people into a cellar, being separated from the group. Hand out nothing else. Ask the table to keep sheets open; you will check darkvision.</p>
+<p><strong>Table kit (AboveVTT).</strong> Three scenes: Cellar, Ground Floor, Upper Floor. Handouts: six invitations, the will. Token for each hearth (lit/out) so the Night Clock is visible. The <strong>Portrait</strong> frame from the Absence Protocol is ready if a player is missing.</p>
+<p><strong>Premise handed to the players.</strong> Each character finds a <strong>sealed invitation in their own pocket</strong>, addressed to them in unfamiliar handwriting. [DECIDED] <strong>The invitation is mandatory</strong>: whether a character opens, burns, or ignores it, they wake in the dining room anyway. Do not let anyone opt out; the house has them already. Ashford's guest list names all six.</p>
+<p><strong>Light.</strong> Candles and two lanterns are on the table. Butch (goblin) and Sassy (elf) have darkvision 60 ft; Hetfield, Kurield, Rivet and Wolfe do not. Rivet's Replicate Magic Item can make <strong>Goggles of Night</strong>; let him hand them out. When the lights go out, candles and hearths are what let everyone see.</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="2-the-house"><h2>2. The house</h2><p><strong>The McTavern.</strong> [DECIDED, Oct 12] The Dining Room and the Kitchen are <strong>one AboveVTT scene: the table's usual tavern map</strong>, reskinned as the house's dining hall. Every table at the table will recognize it. The stage and piano in the corner are Mordax's; the bar's cellar stair is the secret Kitchen-to-Wine-Cellar passage (S3); the kitchen on the right is Luna's. It does not need to line up with the rest of the house (the house is a stage set). Its hazards are T1 to T6 in <code>Session1_Hazards.md</code>. The refuge hearth is a token you place on the left wall.</p>
+<p>Two floors and a cellar. [DECIDED] The grounds are the <strong>edge of the world</strong>: open the front door and there is storm, fog, and a drop where the bridge was. A short scene turns anyone back (section 9). They are not playable. [DECIDED]</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Floor</th>
+<th>Rooms</th>
+<th>Hearth?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ground</strong></td>
+<td>Entry Hall, <strong>Dining Room (refuge)</strong>, Kitchen, Study, Drawing Room, Servant's Passage</td>
+<td>Entry, Dining, Kitchen, Study, Drawing</td>
+</tr>
+<tr>
+<td><strong>Upper</strong></td>
+<td>Master Bedroom, Guest Rooms x4, Trophy Room, Portrait Gallery</td>
+<td>Master Bedroom, Trophy Room, Portrait Gallery</td>
+</tr>
+<tr>
+<td><strong>Cellar</strong></td>
+<td>Wine Cellar, The Pantry, Furnace Room, Hidden Chamber</td>
+<td>Furnace Room has the boiler</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Eight hearths:</strong> Entry Hall, Dining Room, Kitchen, Study, Drawing Room, Master Bedroom, Trophy Room, Portrait Gallery. Guest rooms have none. [NEW]</p>
+<p><strong>The refuge.</strong> [DECIDED] Only the Dining Room hearth is a true refuge: Harwick and the Hounds cannot enter, and <strong>one short rest is available there</strong> (and nowhere else). Other lit hearths stop Harwick from <em>entering</em> the room but are not rest spots. The Dining Room is central on the ground floor and the Collector never goes there.</p>
+<p><strong>Passages.</strong> [NEW] Three secret passages, shown only to those who play with the Twins: <strong>Drawing Room to Servant's Passage</strong>, <strong>Study to Master Bedroom</strong>, <strong>Kitchen to Wine Cellar</strong>.</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="3-the-night-clock-new"><h2>3. The Night Clock [NEW]</h2><p>A grandfather clock in the Entry Hall and a mantel clock in the McTavern chime together. Map it to real time:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Beat</th>
+<th>Real time</th>
+<th>Hearths that gutter out</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Midnight</strong></td>
+<td>Start</td>
+<td>none (the lights go out; hearths stay lit)</td>
+<td>Act 1</td>
+</tr>
+<tr>
+<td><strong>1:00</strong></td>
+<td>~45 min in</td>
+<td><strong>Entry Hall, Kitchen</strong></td>
+<td><strong>Harwick wakes</strong></td>
+</tr>
+<tr>
+<td><strong>3:00</strong></td>
+<td>~95 min in</td>
+<td><strong>Drawing Room, Study</strong></td>
+<td>Hounds roam the ground floor</td>
+</tr>
+<tr>
+<td><strong>4:30</strong></td>
+<td>~135 min in</td>
+<td><strong>Master Bedroom, Trophy Room, Portrait Gallery</strong></td>
+<td>Only the Dining Room is lit; Harwick hunts</td>
+</tr>
+<tr>
+<td><strong>Dawn</strong></td>
+<td>~180 min in</td>
+<td>all</td>
+<td>Harwick's service ends one way or another</td>
+</tr>
+</tbody>
+</table></div>
+<p>Chime when it happens and move the token. A gutted hearth can be <strong>relit</strong> with fire (a cannon flamethrower, a torch, a spell). A relit hearth is safe again. Relighting is how the party fights the clock. The Dining Room hearth never goes out.</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="4-act-1-the-dining-room-25-min"><h2>4. Act 1: The Dining Room (25 min)</h2><p><strong>Read aloud.</strong> <em>You are in a dining room you have never seen. The table is set for a feast nobody has touched. A man in an immaculate suit is mid-sentence: "...and so, by the terms of the will, the estate passes to he who endures." Rain hammers the windows. Each of you is holding a sealed invitation you do not remember being given.</em></p>
+<p><strong>Milo's sword.</strong> [NEW, DECIDED, Oct 12] Beside the refuge hearth lies an old sword, laid flat on the hearthstone as if asleep, its blade warm to the touch. The hilt is inlaid orange, black and white, with two small green stones in the guard. It is Hetfield's grandfather's sword, and it is Hetfield's: kept warm by the fire, waiting for him. It hums when he takes hold of it, and when ignored it tips over flat (the Milo flop). This <strong>sets the stage</strong>: the house leaves things by the fire for the guests it is courting, and the other characters' signature weapons are found in the house later. Mechanics are still homebrew in draft (see the weapons notes).</p>
+<p><strong>Ashford.</strong> [ORIGINAL] Solicitor, 60s. Has done "will readings" three times before and always survives. Cheerful, rehearsed, a little too ready to answer. He is the Noble (CR 1/8) with a hidden Bardic Inspiration (1/day). He <strong>carries the Master Bedroom key</strong> and does not offer it. He explains: the bridge is out, nobody leaves, the house is "occupied," and the family "wished to meet you."</p>
+<p><strong>The mirror.</strong> [ORIGINAL] After Ashford finishes, the lights die. The gilded mirror over the sideboard shows the room lit. Only the reflection smiles.</p>
+<blockquote>
+<p><strong>Mordax (reflection):</strong> <em>"Welcome, welcome. New guests for Ravensmoor. I do love the dining hour."</em> [ORIGINAL]</p>
+</blockquote>
+<p>If anyone attacks it, the glass shatters and re-forms, and the smile stays. [NEW] No stat block, no fight.</p>
+<p><strong>Milo.</strong> [NEW, DECIDED, Oct 12] Mordax runs this house like a show, and nobody can direct a cat. As he finishes his welcome, a faint calico shape pads along the bar behind the party. The reflection stutters and his smile slips. <em>"Who let the cat in?"</em> He recovers the script. This tells the table he can be unsettled. <strong>Limits:</strong> Milo is bound to Hetfield's sword; she appears only near a lit hearth or when the sword is drawn, and Mordax can neither plan for her nor touch her. She helps at beats like this, never the whole night.</p>
+<p><strong>What the table can do now.</strong> Light the room (candles), open the invitations (each names the character, in the same unfamiliar hand), question Ashford, check the windows (storm; drop), try the front door (section 9). The Dining Room hearth burns steadily. <strong>Say this clearly</strong>: the fire is the only warm thing in the house.</p>
+<p><strong>The 1:00 beat.</strong> At the end of Act 1, the clock chimes <strong>1:00</strong>. Entry Hall and Kitchen go dark. Somewhere, someone begins to weep.</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="5-act-2-exploring-50-min"><h2>5. Act 2: Exploring (50 min)</h2><p>Let the party roam. The goals are: isolation (split them), cooperation (the Flues), and a spotlight for each character.</p>
+<h3>The Collector [ORIGINAL] (Entry Hall, upper floor, Trophy Room)</h3>
+<p>Animated Armor (CR 1, 33 HP, AC 18). <strong>Not a damage fight.</strong> [DECIDED, G5] Custom trait <strong>Collect</strong>: when it hits the same target twice in a round (or two rounds), it removes one worn or carried item, and clanks off toward the Trophy Room. Stolen gear is <strong>displayed in the Trophy Room</strong> with previous guests' belongings and <strong>can be won back</strong>. Terrifying and absurd: the armor is polite and proud of its collection. Sassy's duel lives here.</p>
+<h3>The Revenant Hounds [ORIGINAL] x3 (Servant's Passage and Wine Cellar approach)</h3>
+<p>Shadow stat block, translucent dogs. <strong>They hunt by sound.</strong> [ORIGINAL] The party must cross the Servant's Passage to reach the cellar in silence: whisper, no armor clatter, no cantrips. Stealth or clever noise (a thrown coin to lure them). Their touch is a <strong>chill</strong>, not Strength drain: Strength can't drop below 1 and it passes after a rest. [DECIDED] They reform after an hour; they cannot be permanently killed. Butch's moment.</p>
+<p><strong>Table rulings</strong> [NEW, proposed]:
+- <strong>Silence</strong> (Kurield, 2nd level) lets the party cross a 20-ft stretch unheard, but it is concentration and a fixed sphere, so it covers part of the passage, not all of it. A clever, expensive solution; allow it.
+- <strong>Continual Flame</strong> and other magic light do not stop Harwick. Only real hearth fire does.
+- <strong>Turn Undead</strong> on Harwick makes him flee for a minute (the Break route).
+- <strong>Faerie Fire</strong> outlines the Hounds but does not make them solid.
+- <strong>Milo</strong> (Hetfield's sword): animals knew not to mess with Milo. When Hetfield draws the sword near the Hounds, they hesitate; give them disadvantage on their first attack against him in an encounter. [NEW, DECIDED]</p>
+<h3>Luna [ORIGINAL, CHANGED] (Kitchen)</h3>
+<p>Late 40s. She <strong>answers questions about the manor only while performing a task</strong> (peeling, stirring, polishing). Stop her and she stops talking. She knows everything. Resistance to psychic, immune to fear.</p>
+<p><strong>Secret.</strong> She is Mordax's <strong>first victim</strong>, a woman who once stood on his stage and was staged here as a maid. Her true name is scratched on the underside of a chair in the Hidden Chamber: <strong>Edith Marrow</strong>. [NEW, DECIDED] She cannot ask to be freed.</p>
+<p><strong>Freeing her takes two parts</strong> (either alone helps her; both free her):
+1. <strong>Her name.</strong> (Kurield's Detect Thoughts or Zone of Truth can help her, but she must still hear it spoken.) Say "Edith Marrow" to her.
+2. <strong>Her task.</strong> The dinner she never served the heirs: <strong>set and serve a table for six in the Dining Room</strong>. Kurield's <strong>Unseen Servant</strong> can lay the table and <strong>Purify Food and Drink</strong> makes the meal safe (both free, once per long rest). Plates and silver are in the Kitchen and Trophy Room; wine in the Wine Cellar; six candles; a chair pulled out for her. She stops and sits.</p>
+<p>Freed: <em>Luna lowers her hands. Her accent changes. She says "Thank you for dinner" and is gone.</em> <strong>Stage Fill -1.</strong> She is an Echo in Session 4.</p>
+<h3>The Twins [ORIGINAL] (Drawing Room)</h3>
+<p>Elspeth and Dorian, ghost children, died 1843, think it is still their home. They want to play. They share the secret passages and the rhyme <strong>only if the party plays</strong>. [ORIGINAL]</p>
+<p><strong>Game 1: Statues.</strong> Players freeze when a Twin looks; anyone seen moving is "out." Out characters are <em>taken</em> into a passage by a Twin: they reappear <strong>in a different room</strong> (this splits the party, and it is the point). Cold hands: 1d6 cold damage the first time. Win by getting one player across the room unnoticed.</p>
+<p><strong>Game 2: Hide and Seek.</strong> A Twin seeks. If a hider is found, they are hidden in the wall with the Twin until found by the others. The party must also find the three passages (Drawing Room to Servant's Passage, Study to Master Bedroom, Kitchen to Wine Cellar).</p>
+<p>Win both games and the Twins whisper the <strong>rhyme</strong> one line at a time at each lit hearth (section 6).</p>
+<h3>Ashford's secret [ORIGINAL] (Study, Master Bedroom)</h3>
+<p>Ashford <strong>can be redeemed if offered forgiveness</strong>. [ORIGINAL] His deal with Mordax: his survival for delivering guests. He is a coward, not a villain. Eloquence Bard's moment.</p>
+<p><strong>His private offer</strong> [NEW, for mixed alignments]: to the character he thinks most self-interested, he whispers: <em>"I can have your name struck from the guest list. The house forgets you. Bring me the cellar key."</em> It is a trap that never forces anyone.</p>
+<p><strong>Master Bedroom</strong> (locked): the key is on Ashford. Inside, the <strong>journal</strong>: the earlier "will readings" and the dates each family disappeared. It is the evidence that unmasks him.</p>
+<h3>The Study: Fragment #1 [ORIGINAL]</h3>
+<p><em>Inscribed in blood on the back of a false-backed bookcase.</em> [NEW] One book is <strong>shelved wrong</strong> (Investigation DC 13; Kurield will spot it). Pulling it opens the case. The fragment is written <strong>in the same hand as the invitations</strong>.</p>
+<p><strong>Fragment #1 is the syllable "HOS".</strong> [DECIDED, Oct 12] It is the root of <em>host</em>, <em>guest</em>, <em>hostage</em>, and <em>hostile</em>, all one old word for "stranger who is fed." The house is a feast where the guests are hostages of a host, and the fragment says so quietly.</p>
+<ul>
+<li><strong>On the page.</strong> The back of the case reads <em>HOS</em> in blood, over and over, shrinking toward the edge, as if someone kept writing it and ran out of room.</li>
+<li><strong>The beat.</strong> If a player says it aloud, every candle in the room leans toward them and Harwick's weeping, somewhere in the house, stops for a count of three. Then it starts again. (This is the original rule: speaking a fragment outside the ritual tells Mordax where you are and how you feel. Do nothing mechanical with it; the stillness is the cost.)</li>
+<li><strong>Ashford.</strong> Shown the word, he flinches. Mordax says it when he is pleased. A free tell.</li>
+<li><strong>If nobody finds it.</strong> Harwick says "Hos" once in the Release scene, as part of "Host, I have been a poor one." A second, quieter chance.</li>
+<li><strong>Later sessions.</strong> Each fragment should be a syllable that rhymes with its session's theme (harvest, signal, stage). Nothing in Session 1 depends on what the other four turn out to be.</li>
+</ul>
+<h3>The Portrait Gallery [NEW job]</h3>
+<p>Portraits "track the party"; their eyes point toward the <strong>Hidden Chamber</strong>. This is also where an absent character hangs (Absence Protocol).</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="6-the-flues-the-cross-room-puzzle-new"><h2>6. The Flues: the cross-room puzzle [NEW]</h2><p><strong>Feeling:</strong> isolation turning into trust. A single player cannot solve it.</p>
+<p><strong>Setup.</strong> All eight hearths are connected by flues to the Furnace Room's <strong>damper panel</strong>: eight iron levers marked only with pictograms. Whatever is spoken into a lit hearth carries to the others. The Twins give the rhyme <strong>one line per lit hearth</strong>, whispered only to someone standing at that hearth.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Lever</th>
+<th>Hearth</th>
+<th>Rhyme line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Entry Hall (door)</td>
+<td>"Guests come in from the cold and the rain"</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Dining Room (fork)</td>
+<td>"They sit and are fed, and are sat down again"</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Kitchen (pot)</td>
+<td>"The cook knows the secrets, the pot knows the rest"</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Study (book)</td>
+<td>"The books keep the ledger of every guest"</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Drawing Room (harp)</td>
+<td>"We play where the music is sad and slow"</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Trophy Room (antlers)</td>
+<td>"The prizes are things you thought you could keep"</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Portrait Gallery (frame)</td>
+<td>"The faces all watch while the others sleep"</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Master Bedroom (bed)</td>
+<td>"And the master lies last, where the last ones go"</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>What they must do.</strong> Someone at the damper panel pulls the levers in order. The others stand at hearths and report lines. If a hearth is out, its line is silent until relit (relighting becomes a quest). A <strong>wrong lever</strong> gutters that hearth (it can be relit) and costs the party a turn. A <strong>correct full sequence</strong> lights all eight at once: the Fire ending.</p>
+<p><strong>Hints.</strong> The rhyme order is the order guests walked the house; the Study's journal also lists it. Anyone can shout down a flue to the cellar.</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="7-act-3-the-cellar-40-min"><h2>7. Act 3: The Cellar (40 min)</h2><p><strong>Servant's Passage</strong> to the <strong>Wine Cellar</strong> (entry; wine for Luna's dinner). <strong>The Pantry</strong>: preserved figures hang in cold storage. The figures are <strong>previous guests</strong>; their gear is in the Trophy Room. [NEW] <strong>Mordax</strong> appears among them:</p>
+<blockquote>
+<p><em>One of the figures blinks. A slow clap echoes.</em> <strong>"Oh, you found my pantry. Don't worry, you're not ready yet. I like my meals properly... seasoned."</strong> [ORIGINAL]</p>
+</blockquote>
+<p>He never fights. If attacked, he fades as the mirror did.</p>
+<p><strong>The Hidden Chamber.</strong> Luna's chair, with <strong>Edith Marrow</strong> scratched underneath. A cold room that holds the evidence of the first victim. The Portrait Gallery's eyes point here.</p>
+<p><strong>The Furnace Room.</strong> The boiler and the <strong>damper panel</strong>. This is where the Fire ending is made. It has its own warmth: anyone here is safe from Harwick, too.</p>
+<p><strong>Ashford's secret nearly out.</strong> The journal ties him to the missing families. If confronted, he breaks down.</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="8-climax-harwick-45-min"><h2>8. Climax: Harwick (45 min)</h2><p>At <strong>4:30</strong>, only the Dining Room hearth is lit. Harwick, the Grieving Butler, now hunts.</p>
+<p><strong>Harwick.</strong> [ORIGINAL, CHANGED] Specter-based, scaled to about <strong>CR 2</strong> [DECIDED]. Flies. Mission: <strong>preserve the guests</strong> by dragging them to the cellar, not killing. He weeps as he does it. <strong>He cannot enter a room with a lit hearth.</strong></p>
+<ul>
+<li><strong>Offer.</strong> He greets the party: <em>"May I be of service?"</em> If refused, he attacks.</li>
+<li><strong>I Must Serve.</strong> DC 13 Strength save or grappled and pulled toward the cellar. The Barbarian can hold the Servant's Passage chokepoint.</li>
+<li><strong>Life Drain</strong> reduces HP maximum until a rest. Against d8 characters it is the main danger.</li>
+</ul>
+<p><strong>Three endings</strong> [DECIDED]. Each ends the night at dawn.</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Route</th>
+<th>How</th>
+<th>Last image</th>
+<th>Stage Fill</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fire</strong></td>
+<td>All eight hearths lit (the Flues, or relighting by hand). Harwick cannot cross any threshold.</td>
+<td>The house blazing, the storm breaking</td>
+<td>-1 (heroic/funny) at your discretion</td>
+</tr>
+<tr>
+<td><strong>Release</strong></td>
+<td>Persuade or forgive him: he serves the house, not Mordax. He wants to be told he can stop. <strong>Advantage if Milo is allowed to flop at his feet</strong> (a butler can set down his tray for a cat); not cumulative with other advantage.</td>
+<td>Harwick sets down his tray and fades</td>
+<td>-1</td>
+</tr>
+<tr>
+<td><strong>Break</strong></td>
+<td>A non-lethal fight drives him off</td>
+<td>He retreats weeping into the cellar</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="9-the-grounds-the-edge-of-the-world-decided"><h2>9. The grounds: the edge of the world [DECIDED]</h2><p>If anyone opens the front door or a window: <em>Fog fills the doorway. Beyond it there is nothing. The storm has taken the ground and the bridge, and a wind drags at your coat like a hand.</em> One roll (Athletics or Dexterity DC 13) to pull back. Failure: 1d6 cold and a scare. The chapel sigils are a later session's problem.</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="10-dawn-and-the-session-2-hook"><h2>10. Dawn and the Session 2 hook</h2><p><em>Light creeps through the windows. The storm is gone. The front door stands open and the bridge, impossibly, is whole. A road runs through the mist to a village. Smoke rises. Someone is playing a fiddle.</em></p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="11-stage-fill-and-the-level-up"><h2>11. Stage Fill and the level-up</h2><p>Start at <strong>3</strong>. Adjust as events occur:</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Stage Fill</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Free Luna (name + dinner)</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>Ashford redeemed through forgiveness</td>
+<td>-1</td>
+</tr>
+<tr>
+<td>Ashford escapes with his secret</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>A player drops to 0 HP</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>A named NPC dies</td>
+<td>+1</td>
+</tr>
+<tr>
+<td>Genuinely heroic or funny</td>
+<td>-1</td>
+</tr>
+</tbody>
+</table></div>
+<p>Mark any <strong>bond</strong>. Level to 4 between sessions. [ORIGINAL]</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="12-if-a-player-is-absent"><h2>12. If a player is absent</h2><p>Use <strong>"The House Keeps Them"</strong> (Absence Protocol): the character is hung in the Portrait Gallery, safe and unreachable. Return through a picture frame with a cue card in a servant's copperplate.</p></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="13-spotlight-checklist"><h2>13. Spotlight checklist</h2><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Character</th>
+<th>Moment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hetfield</strong> (Eloquence Bard)</td>
+<td>Ashford's confession; Harwick's Release</td>
+</tr>
+<tr>
+<td><strong>Butch</strong> (Assassin)</td>
+<td>The Hounds in the Servant's Passage</td>
+</tr>
+<tr>
+<td><strong>Kurield</strong> (Knowledge Cleric)</td>
+<td>The wrongly shelved book; Fragment #1</td>
+</tr>
+<tr>
+<td><strong>Sassy</strong> (Swashbuckler)</td>
+<td>The Collector duel</td>
+</tr>
+<tr>
+<td><strong>Rivet</strong> (Artillerist)</td>
+<td>The flamethrower relights hearths; the Twins' toy soldier</td>
+</tr>
+<tr>
+<td><strong>Wolfe</strong> (Barbarian)</td>
+<td>Holding the passage; breaking the Collector's grip; a wild surge; Magic Awareness</td>
+</tr>
+</tbody>
+</table></div></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="14-open-for-you"><h2>14. Open for you</h2><ol>
+<li><strong>Dominic's</strong> D&amp;D Beyond handle (he plays Wolfe), and Wolfe's sheet shows no Healer's Kit (the Healer feat needs one).</li>
+<li>Alignment for Hetfield. Butch is Lawful Evil (Ashford's bargain goes to him); Hetfield's is unknown; Sassy, Kurield, Rivet and Wolfe are Chaotic Good.</li>
+<li>Kurield's sheet lists no equipment and AC 11; ask him to finish it.</li>
+<li>(Resolved from Rivet's sheet.) Rivet chooses Flamethrower, Force Ballista or Protector each time he activates the cannon (Cam confirmed Oct 12). The Flamethrower relights a hearth as a bonus action; the cannon lasts an in-game hour, then costs a slot to recreate.</li>
+</ol></section>
+ <div class="footer"></div>
+</div></div>
+
+<script>
+(function(){
+  var links=document.querySelectorAll('.nav-link'), side=document.getElementById('sidebar');
+  var map={};links.forEach(function(l){map[l.getAttribute('href').slice(1)]=l;});
+  var cards=Array.prototype.slice.call(document.querySelectorAll('.section-card'));
+  function setActive(){
+    var cur=cards[0], line=window.innerHeight*0.3;
+    cards.forEach(function(c){if(c.getBoundingClientRect().top<=line)cur=c;});
+    links.forEach(function(l){l.classList.remove('active');});
+    if(cur&&map[cur.id])map[cur.id].classList.add('active');
+  }
+  window.addEventListener('scroll',setActive,{passive:true});setActive();
+  var btn=document.getElementById('menu-btn');
+  if(btn)btn.addEventListener('click',function(){side.classList.toggle('open');});
+  links.forEach(function(l){l.addEventListener('click',function(){side.classList.remove('open');});});
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Session 1: Hazard Key (DM)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg-main:#0d0a08;--bg-sidebar:#1a1208;--bg-card:#2a1f15;--text-primary:#e8d5a8;--text-secondary:#b8a080;
+--text-dim:#8a7560;--gold:#8b6914;--gold-light:#d4a017;--gold-bright:#f0c040;--blood:#6b0000;--blood-light:#8b1a1a;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg-main);color:var(--text-primary);font-family:'Crimson Text',Georgia,serif;font-size:18px;line-height:1.7}
+h1,h2,h3,.cinzel{font-family:'Cinzel',Georgia,serif;font-weight:600}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-main)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:280px;background:var(--bg-sidebar);border-right:1px solid rgba(139,105,20,.3);z-index:40;display:flex;flex-direction:column;overflow-y:auto}
+.side-head{padding:1.75rem 1.5rem 1rem;border-bottom:1px solid rgba(139,105,20,.2)}
+.side-eyebrow{font-family:'Cinzel',serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold)}
+.side-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:.05em;margin-top:2px}
+.side-sub{font-size:.8rem;color:var(--text-dim);margin-top:.5rem;font-style:italic}
+nav{padding:1rem 0;flex:1}
+.nav-link{display:block;padding:.7rem 1.25rem;color:var(--text-secondary);text-decoration:none;font-size:15px;border-left:2px solid transparent;transition:all .2s}
+.nav-link:hover{color:var(--gold-light);background:rgba(139,105,20,.08)}
+.nav-link.active{color:var(--gold-light);border-left-color:var(--gold-light);background:rgba(139,105,20,.12)}
+.main{margin-left:280px;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}
+.hero{text-align:center;padding:3rem 1rem 2rem}
+.hero h1{font-size:2.2rem;line-height:1.3;letter-spacing:.1em;color:var(--gold-bright);margin:.25rem 0 .75rem;text-shadow:0 0 30px rgba(212,160,23,.25)}
+.hero .sub{color:var(--text-secondary);font-style:italic}
+.hero blockquote{margin:1.5rem auto 0;max-width:36rem;border:0;background:none;color:var(--gold-light);font-style:italic;font-size:1.25rem;padding:0}
+.section-card{background:var(--bg-card);border:1px solid rgba(139,105,20,.2);border-radius:8px;padding:2rem;margin-bottom:1.5rem;scroll-margin-top:1rem}
+.section-card h2{color:var(--gold-light);margin-top:0;font-size:1.6rem;letter-spacing:.06em;border-bottom:1px solid rgba(139,105,20,.25);padding-bottom:.6rem}
+.section-card h3{color:var(--gold-bright);font-size:1.1rem;letter-spacing:.05em;margin:1.6rem 0 .5rem}
+.section-card p,.section-card li{color:var(--text-primary)}
+.section-card strong{color:var(--gold-bright)}
+.section-card em{color:var(--text-secondary)}
+blockquote{border-left:3px solid var(--gold-light);background:rgba(139,105,20,.1);margin:1.5rem 0;padding:1rem 1.5rem;border-radius:0 6px 6px 0}
+blockquote p{margin:.3rem 0}
+.divider{text-align:center;color:var(--gold);font-size:1.2rem;padding:.5rem 0 1.25rem;opacity:.6;letter-spacing:.5em}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+th,td{border:1px solid rgba(139,105,20,.25);padding:.5rem .7rem;text-align:left;vertical-align:top}
+th{background:rgba(139,105,20,.15);color:var(--gold-light);font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.06em}
+tr:nth-child(even) td{background:rgba(0,0,0,.12)}
+.table-scroll{overflow-x:auto}
+.session-preview{border-radius:8px;padding:1.5rem 1.75rem;background:rgba(0,0,0,.18);margin:1.25rem 0;position:relative;overflow:hidden}
+.session-preview::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.session-preview h3{margin-top:.25rem}
+.s1{border:1px solid rgba(122,94,160,.35)}.s1::before{background:linear-gradient(90deg,#7a5ea0,#8b6914)}
+.s2{border:1px solid rgba(196,146,42,.35)}.s2::before{background:linear-gradient(90deg,#c4922a,#d4a017)}
+.s3{border:1px solid rgba(106,138,154,.35)}.s3::before{background:linear-gradient(90deg,#4a6a7a,#6a8a9a)}
+.s4{border:1px solid rgba(139,26,26,.4)}.s4::before{background:linear-gradient(90deg,#6b0000,#8b1a1a)}
+hr{border:0;border-top:1px solid rgba(139,105,20,.2);margin:1.5rem 0}
+.footer{text-align:center;color:var(--text-dim);font-style:italic;padding:2rem 0}
+.mobile-header{display:none}
+/* notes tool */
+.notes-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+.notes-tab{background:transparent;color:var(--text-secondary);border:1px solid rgba(139,105,20,.35);border-radius:4px;padding:.4rem .9rem;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.08em;cursor:pointer}
+.notes-tab.active{background:rgba(139,105,20,.25);color:var(--gold-bright);border-color:var(--gold-light)}
+.notes-pane{display:none}.notes-pane.active{display:block}
+.notes-pane label{display:block;font-family:'Cinzel',serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);margin:1rem 0 .3rem}
+.notes-pane textarea{width:100%;min-height:110px;background:rgba(0,0,0,.25);color:var(--text-primary);border:1px solid rgba(139,105,20,.3);border-radius:6px;padding:.7rem;font-family:'Crimson Text',serif;font-size:16px;resize:vertical}
+.notes-pane textarea:focus{outline:none;border-color:var(--gold-light)}
+.btn{background:var(--gold);color:#fff;border:0;border-radius:4px;padding:.5rem 1.1rem;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;cursor:pointer}
+.btn:hover{background:var(--gold-light);color:#1a1208}
+.notes-status{color:var(--text-dim);font-size:.85rem;margin-left:.75rem;font-style:italic}
+@media(max-width:900px){
+ .sidebar{transform:translateX(-100%);transition:transform .25s}.sidebar.open{transform:none}
+ .main{margin-left:0}.mobile-header{display:flex;align-items:center;position:sticky;top:0;z-index:30;background:var(--bg-sidebar);border-bottom:1px solid rgba(139,105,20,.3);padding:.6rem 1rem}
+ .mobile-header button{background:none;border:0;color:var(--gold-light);font-size:1.5rem;cursor:pointer;margin-right:.75rem}
+ .mobile-header span{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.1em;color:var(--gold-light)}
+ .wrap{padding:1.5rem 1rem 3rem}.hero h1{font-size:1.8rem}.section-card{padding:1.25rem}
+}
+</style></head>
+<body>
+<div class="mobile-header"><button id="menu-btn" type="button" aria-label="Menu">&#9776;</button><span>THE REVELER'S STAGE</span></div>
+<aside class="sidebar" id="sidebar">
+ <div class="side-head"><div class="side-eyebrow">DM only</div><div class="side-title">Session 1</div><div class="side-sub">Hazard Key</div></div>
+ <nav><a class="nav-link" href="#how-strikes-work-decided-oct-12">How strikes work [DECIDED, Oct 12]</a><a class="nav-link" href="#the-mctavern-dining-room-and-kitchen-decided-oct-12">The McTavern (Dining Room and Kitchen) [DECIDED, Oct 12]</a><a class="nav-link" href="#ground-floor-the-rest-of-the-house">Ground floor (the rest of the house)</a><a class="nav-link" href="#upper-floor">Upper floor</a><a class="nav-link" href="#cellar">Cellar</a><a class="nav-link" href="#notes">Notes</a></nav>
+</aside>
+<div class="main"><div class="wrap">
+ <header class="hero"><h1>Session 1 Hazard Key: &quot;the house keeps count&quot;</h1><div class="sub">DM only. Pairs with the map PNGs in `maps/` (the `_DM` maps show these markers; the McTavern uses an overlay). 1 square = 5 ft. House floors: 32 px per square, 40 x 26 squares each.</div><blockquote></blockquote></header>
+ <section class="section-card" id="how-strikes-work-decided-oct-12"><h2>How strikes work [DECIDED, Oct 12]</h2><ul>
+<li><strong>Per hazard, shared by the whole party</strong> (not per player). Each hazard token carries three pips.</li>
+<li>A <strong>mistake</strong> is a failed check or save at the hazard, or ignoring its tell. Add one pip.</li>
+<li><strong>Strike 1: a warning.</strong> Mild cost (at most 1d4, or a noise). Always give a <strong>tell first</strong> (a creak, draft, smell, or glint) so careful players can avoid it.</li>
+<li><strong>Strike 2: a real cost.</strong> 1d6 to 2d6, or noise that pulls the Revenant Hounds, or a split in the party.</li>
+<li><strong>Strike 3: the house closes.</strong> A <strong>lasting consequence</strong> (a route collapses, a hearth gutters early, items go to the Collector's shelf, the party is Chilled). <strong>No single trigger ever deals more than 2d6, and nothing here kills outright.</strong> A character at 0 HP from a hazard is pulled through a passage by the Twins and wakes in another room at 1 HP.</li>
+<li><strong>Reset.</strong> A hazard is <strong>solved</strong> when the party disarms it, avoids it with a clever plan, or uses it against the house. Remove its pips.</li>
+<li><strong>Hearth light</strong> matters: in an unlit room, creatures without darkvision have disadvantage on checks to spot a tell. Candles and lanterns count as dim light for tells.</li>
+<li><strong>Save DCs</strong> stay at 11 to 13, the same range as the stat blocks.</li>
+</ul></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="the-mctavern-dining-room-and-kitchen-decided-oct-12"><h2>The McTavern (Dining Room and Kitchen) [DECIDED, Oct 12]</h2><p><em>The starting scene is the table's usual tavern map, reskinned as the house's Dining Room and Kitchen. It is a </em><em>separate AboveVTT scene</em><em> from the rest of the ground floor; rooms need not line up (the house is a stage set). Markers T1 to T6 are on <code>maps/Session1_McTavern_Overlay.png</code>. The refuge hearth is a token you place on the left-wall nook; </em><em>fire never takes hold within 10 ft of it</em><em>.</em></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Where</th>
+<th>Tell</th>
+<th>Strike 1</th>
+<th>Strike 2</th>
+<th>Strike 3 (lasting)</th>
+<th>Solved by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T1</strong></td>
+<td>In front of the bar</td>
+<td>Sticky shine and the smell of sour ale</td>
+<td>Slip: DC 11 Dex or prone</td>
+<td>Slide into the stools: 1d6 and a clatter (noise)</td>
+<td>The floor is an <strong>ale slick</strong> (difficult terrain) all night and the bar rail snaps</td>
+<td>Sawdust or salt, or drag a table over it</td>
+</tr>
+<tr>
+<td><strong>T2</strong></td>
+<td>Glass shelf behind the bar</td>
+<td>Bottles chink</td>
+<td>A bottle falls (noise)</td>
+<td>The shelf shudders: DC 12 Dex or 2d6 slashing (half on a save)</td>
+<td>The shelf <strong>collapses over the cellar stair</strong> (S3) for 10 minutes (Athletics DC 14 to clear)</td>
+<td>Brace the shelf (Mending, or two characters)</td>
+</tr>
+<tr>
+<td><strong>T3</strong></td>
+<td>Oil lamps on the tables</td>
+<td>A lamp gutters and smells hot</td>
+<td>A lamp tips: 1d4 fire on the nearest creature</td>
+<td>Fire spreads over two tables: DC 12 Dex or 1d6 and it keeps spreading</td>
+<td>A <strong>fire rages</strong> across the common room: three tables blocked and the light flickers (dim)</td>
+<td>Smother it with a tablecloth (an action each)</td>
+</tr>
+<tr>
+<td><strong>T4</strong></td>
+<td>Kitchen flagstones</td>
+<td>A shine on the floor and the smell of old fat</td>
+<td>Slip: DC 11 Dex or prone</td>
+<td>Fall into the counter: 1d6 and the table clatters (noise)</td>
+<td>The pot spills: <strong>scalding steam</strong> (1d6 per round for 3 rounds), the kitchen is heavily obscured</td>
+<td>Clear the grease (Mending, or a bucket of ash)</td>
+</tr>
+<tr>
+<td><strong>T5</strong></td>
+<td>Kitchen steam vent</td>
+<td>A hiss near the stove</td>
+<td>1d4 fire, no save</td>
+<td>DC 12 Con save or 1d6 fire</td>
+<td>The vent <strong>fills the doorway to the Servant's Passage</strong> with steam for 10 minutes</td>
+<td>Turn off the stove valve (Investigation DC 12)</td>
+</tr>
+<tr>
+<td><strong>T6</strong></td>
+<td>Mordax's piano, on the stage</td>
+<td>The keys press themselves</td>
+<td>A loud chord (noise)</td>
+<td>The tune is a dirge: DC 12 Wis save or <strong>frightened</strong> for 1 round</td>
+<td>The <strong>stage curtains drop</strong> across the north door for 10 minutes (Athletics DC 13 to tear through)</td>
+<td>Silence the keys (close the lid, Silence, or play a different tune: Hetfield), or <strong>let Milo walk the keys</strong>: the calico spirit's paw breaks the dirge and solves T6</td>
+</tr>
+</tbody>
+</table></div></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="ground-floor-the-rest-of-the-house"><h2>Ground floor (the rest of the house)</h2><p><em>G3 and G4 (Kitchen) moved to the McTavern as T4 and T5.</em></p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Where</th>
+<th>Tell</th>
+<th>Strike 1</th>
+<th>Strike 2</th>
+<th>Strike 3 (lasting)</th>
+<th>Solved by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>G1</strong></td>
+<td>Entry Hall, grand stair</td>
+<td>The treads creak when stepped on lightly</td>
+<td>A loud creak: the Hounds, if awake, turn toward the Entry Hall</td>
+<td>DC 12 Dex save or a tread breaks: 1d6 and prone</td>
+<td>The stair is <strong>broken</strong>: reaching the upper floor now needs Athletics DC 13 or the balcony</td>
+<td>Walk the wall edge (Stealth DC 12) or mend it (Rivet's Mending, 10 minutes)</td>
+</tr>
+<tr>
+<td><strong>G2</strong></td>
+<td>Entry Hall, chandelier</td>
+<td>A faint swing in the air</td>
+<td>A candle falls: 1d4 fire on a flammable rug</td>
+<td>The chandelier drops partly: 2d6 on a creature below (DC 12 Dex for half) and the Entry Hall goes dark</td>
+<td>The chandelier crashes: <strong>difficult terrain</strong> across the hall and the <strong>Entry Hearth gutters out</strong></td>
+<td>Cut the rope or grab it (Sassy's swing is a dash across the hall)</td>
+</tr>
+<tr>
+<td><strong>G5</strong></td>
+<td>Study, the shelves</td>
+<td>One book sits slightly out</td>
+<td>A book thuds loudly</td>
+<td>A shelf tips: DC 12 Dex save or 2d6 bludgeoning (half on a save)</td>
+<td>The <strong>shelves slide shut</strong>: the false-backed bookcase is <strong>blocked</strong> for 10 minutes</td>
+<td>Pull only the right book (shelved wrong: Investigation DC 13)</td>
+</tr>
+<tr>
+<td><strong>G6</strong></td>
+<td>Drawing Room, the statues</td>
+<td>They are in new poses every time the room is lit</td>
+<td>One statue is nearer (no effect)</td>
+<td>A statue moves while unwatched: DC 12 Dex save or 1d6 and grabbed</td>
+<td>The statues <strong>block the Entry Hall door</strong> and the <strong>Twins start Statues</strong> with a bonus (items grabbed)</td>
+<td>Keep eyes on them (the Twins' game can be won)</td>
+</tr>
+<tr>
+<td><strong>G7</strong></td>
+<td>Servant's Passage, loose flagstones</td>
+<td>A flag rocks underfoot</td>
+<td>A clatter: Hounds' attention</td>
+<td>Stumble: DC 12 Dex, prone and noise</td>
+<td>A flag <strong>gives way</strong>: 10-ft drop to the Wine Cellar (1d6) and the Hounds are alerted</td>
+<td>Step along the wall (Stealth DC 13)</td>
+</tr>
+<tr>
+<td><strong>G8</strong></td>
+<td>Servant's Passage, wet stair</td>
+<td>Moisture on the steps</td>
+<td>Slip: DC 11 Dex or slide 5 ft</td>
+<td>Fall down the stair: 1d6 and prone at the bottom</td>
+<td>The stair is <strong>icy for an hour</strong>; each crossing needs a DC 12 Athletics or Dex save</td>
+<td>Salt or sand (the Kitchen has salt)</td>
+</tr>
+</tbody>
+</table></div></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="upper-floor"><h2>Upper floor</h2><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Where</th>
+<th>Tell</th>
+<th>Strike 1</th>
+<th>Strike 2</th>
+<th>Strike 3 (lasting)</th>
+<th>Solved by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>U1</strong></td>
+<td>Trophy Room, display cases (pressure plates)</td>
+<td>Glint and a faint click underfoot</td>
+<td>A case chimes (noise)</td>
+<td>A case snaps: DC 12 Dex or 1d6 and <strong>an item is displayed</strong></td>
+<td>The <strong>Collector arrives</strong> and starts collecting</td>
+<td>Step on the dark tiles only (Investigation DC 12)</td>
+</tr>
+<tr>
+<td><strong>U2</strong></td>
+<td>Portrait Gallery, creaking boards</td>
+<td>The portraits' eyes follow you</td>
+<td>A board creaks; the eyes turn to the noise</td>
+<td>The eyes flash: DC 12 Wis save or <strong>frightened</strong> for 1 round</td>
+<td>A portrait <strong>lights up</strong>: the gallery is bright, everyone is visible, and Harwick's weeping stops (he is coming)</td>
+<td>Cross the edges (Stealth DC 12) or cover the frames</td>
+</tr>
+<tr>
+<td><strong>U3</strong></td>
+<td>Trophy Room, shelf of the party's own items</td>
+<td>One of the party's items is on display</td>
+<td>(no cost)</td>
+<td>Taking the item triggers a case (see U1)</td>
+<td>The <strong>Collector takes one extra item</strong> when it next hits</td>
+<td>Trade for it (a compliment or a better piece)</td>
+</tr>
+<tr>
+<td><strong>U4</strong></td>
+<td>Upper Hall rug</td>
+<td>The rug seems to breathe</td>
+<td>A slip: DC 11 Dex or prone</td>
+<td>The rug pulls: <strong>grappled</strong> until freed (Athletics DC 12)</td>
+<td>The hall becomes <strong>difficult terrain</strong> for the night</td>
+<td>Roll up the rug (an action)</td>
+</tr>
+</tbody>
+</table></div></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="cellar"><h2>Cellar</h2><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Where</th>
+<th>Tell</th>
+<th>Strike 1</th>
+<th>Strike 2</th>
+<th>Strike 3 (lasting)</th>
+<th>Solved by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>C1</strong></td>
+<td>Wine Cellar, sunken tier (3-ft steps)</td>
+<td>Wet stone and a drip</td>
+<td>Slip: DC 11 Dex or prone</td>
+<td>Fall to the lower tier: 1d6 and noise</td>
+<td>The tier <strong>floods</strong> (difficult terrain, 1 ft of cold water)</td>
+<td>Take the steps slowly (Athletics DC 11)</td>
+</tr>
+<tr>
+<td><strong>C2</strong></td>
+<td>Wine Cellar, racks</td>
+<td>A bottle chinks</td>
+<td>A bottle falls (noise)</td>
+<td>A rack tips: DC 12 Dex or 2d6 and pinned</td>
+<td>The racks <strong>block the Servant's stair</strong> until moved (Athletics DC 14)</td>
+<td>Brace the rack (two characters)</td>
+</tr>
+<tr>
+<td><strong>C3</strong></td>
+<td>Pantry, cold</td>
+<td>Frost on the walls</td>
+<td>Cold bite: DC 11 Con or <strong>Chilled</strong> (STR -1, ends on rest)</td>
+<td>Chilled stacks (up to -3)</td>
+<td>The Pantry is <strong>frozen</strong>: difficult terrain and the cold deals 1d4 each minute</td>
+<td>Get out; warm clothes help (Hetfield's Heroic Inspiration, Rivet's cannon)</td>
+</tr>
+<tr>
+<td><strong>C4</strong></td>
+<td>Furnace Room, <strong>catwalk</strong> (set piece)</td>
+<td>Rust flakes and a groan</td>
+<td>A rail bends</td>
+<td>DC 12 Dex save or a plank gives way: 5-ft fall onto the lower catwalk</td>
+<td>The catwalk <strong>collapses</strong>: a drop into the boiler pit (2d6 fire, <strong>escape DC 13 Athletics</strong>, rope from Butch)</td>
+<td>Cross one at a time, with rope (Rivet's rope, Butch's rope)</td>
+</tr>
+<tr>
+<td><strong>C5</strong></td>
+<td>Furnace Room, steam vent</td>
+<td>A hiss near the pipes</td>
+<td>1d4 fire</td>
+<td>DC 12 Con or 1d6 fire</td>
+<td><strong>Steam fills the room</strong> for 10 minutes (heavily obscured)</td>
+<td>Shut the valve at the damper panel (Investigation DC 12)</td>
+</tr>
+<tr>
+<td><strong>C6</strong></td>
+<td>Hidden Chamber, cold and dark</td>
+<td>No light and a breath of cold</td>
+<td>Cold: DC 11 Con or Chilled</td>
+<td>Chilled stacks</td>
+<td>The chamber's door <strong>seals</strong> for 10 minutes</td>
+<td>Bring a lit hearth-flame (a torch or a flamethrower)</td>
+</tr>
+</tbody>
+</table></div></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="notes"><h2>Notes</h2><ul>
+<li><strong>Set pieces.</strong> The chandelier (G2) and the catwalk (C4) are the two set pieces. Both reward bold, clever play (Sassy's swing; a rope across the pit) and punish repeated carelessness.</li>
+<li><strong>Night Clock.</strong> Strike 3 at G2 gutters the Entry Hearth early. That is <strong>in addition to</strong> the clock, never replaces it.</li>
+<li><strong>Fairness check.</strong> Every Strike 3 gives the party a way forward: nothing locks them out of Harwick's endings, and the Dining Room stays safe.</li>
+<li><strong>Open for you:</strong> confirm the three-strike costs feel right (especially G2's hearth gutter and C4's boiler pit).</li>
+</ul></section>
+ <div class="footer"></div>
+</div></div>
+
+<script>
+(function(){
+  var links=document.querySelectorAll('.nav-link'), side=document.getElementById('sidebar');
+  var map={};links.forEach(function(l){map[l.getAttribute('href').slice(1)]=l;});
+  var cards=Array.prototype.slice.call(document.querySelectorAll('.section-card'));
+  function setActive(){
+    var cur=cards[0], line=window.innerHeight*0.3;
+    cards.forEach(function(c){if(c.getBoundingClientRect().top<=line)cur=c;});
+    links.forEach(function(l){l.classList.remove('active');});
+    if(cur&&map[cur.id])map[cur.id].classList.add('active');
+  }
+  window.addEventListener('scroll',setActive,{passive:true});setActive();
+  var btn=document.getElementById('menu-btn');
+  if(btn)btn.addEventListener('click',function(){side.classList.toggle('open');});
+  links.forEach(function(l){l.addEventListener('click',function(){side.classList.remove('open');});});
+})();
+</script>
+
+</body></html>

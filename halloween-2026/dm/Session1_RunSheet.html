@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Session 1: Run Sheet (DM)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg-main:#0d0a08;--bg-sidebar:#1a1208;--bg-card:#2a1f15;--text-primary:#e8d5a8;--text-secondary:#b8a080;
+--text-dim:#8a7560;--gold:#8b6914;--gold-light:#d4a017;--gold-bright:#f0c040;--blood:#6b0000;--blood-light:#8b1a1a;}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg-main);color:var(--text-primary);font-family:'Crimson Text',Georgia,serif;font-size:18px;line-height:1.7}
+h1,h2,h3,.cinzel{font-family:'Cinzel',Georgia,serif;font-weight:600}
+::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:var(--bg-main)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:280px;background:var(--bg-sidebar);border-right:1px solid rgba(139,105,20,.3);z-index:40;display:flex;flex-direction:column;overflow-y:auto}
+.side-head{padding:1.75rem 1.5rem 1rem;border-bottom:1px solid rgba(139,105,20,.2)}
+.side-eyebrow{font-family:'Cinzel',serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--gold)}
+.side-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:.05em;margin-top:2px}
+.side-sub{font-size:.8rem;color:var(--text-dim);margin-top:.5rem;font-style:italic}
+nav{padding:1rem 0;flex:1}
+.nav-link{display:block;padding:.7rem 1.25rem;color:var(--text-secondary);text-decoration:none;font-size:15px;border-left:2px solid transparent;transition:all .2s}
+.nav-link:hover{color:var(--gold-light);background:rgba(139,105,20,.08)}
+.nav-link.active{color:var(--gold-light);border-left-color:var(--gold-light);background:rgba(139,105,20,.12)}
+.main{margin-left:280px;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto;padding:2.5rem 2rem 4rem}
+.hero{text-align:center;padding:3rem 1rem 2rem}
+.hero h1{font-size:2.2rem;line-height:1.3;letter-spacing:.1em;color:var(--gold-bright);margin:.25rem 0 .75rem;text-shadow:0 0 30px rgba(212,160,23,.25)}
+.hero .sub{color:var(--text-secondary);font-style:italic}
+.hero blockquote{margin:1.5rem auto 0;max-width:36rem;border:0;background:none;color:var(--gold-light);font-style:italic;font-size:1.25rem;padding:0}
+.section-card{background:var(--bg-card);border:1px solid rgba(139,105,20,.2);border-radius:8px;padding:2rem;margin-bottom:1.5rem;scroll-margin-top:1rem}
+.section-card h2{color:var(--gold-light);margin-top:0;font-size:1.6rem;letter-spacing:.06em;border-bottom:1px solid rgba(139,105,20,.25);padding-bottom:.6rem}
+.section-card h3{color:var(--gold-bright);font-size:1.1rem;letter-spacing:.05em;margin:1.6rem 0 .5rem}
+.section-card p,.section-card li{color:var(--text-primary)}
+.section-card strong{color:var(--gold-bright)}
+.section-card em{color:var(--text-secondary)}
+blockquote{border-left:3px solid var(--gold-light);background:rgba(139,105,20,.1);margin:1.5rem 0;padding:1rem 1.5rem;border-radius:0 6px 6px 0}
+blockquote p{margin:.3rem 0}
+.divider{text-align:center;color:var(--gold);font-size:1.2rem;padding:.5rem 0 1.25rem;opacity:.6;letter-spacing:.5em}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+th,td{border:1px solid rgba(139,105,20,.25);padding:.5rem .7rem;text-align:left;vertical-align:top}
+th{background:rgba(139,105,20,.15);color:var(--gold-light);font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.06em}
+tr:nth-child(even) td{background:rgba(0,0,0,.12)}
+.table-scroll{overflow-x:auto}
+.session-preview{border-radius:8px;padding:1.5rem 1.75rem;background:rgba(0,0,0,.18);margin:1.25rem 0;position:relative;overflow:hidden}
+.session-preview::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.session-preview h3{margin-top:.25rem}
+.s1{border:1px solid rgba(122,94,160,.35)}.s1::before{background:linear-gradient(90deg,#7a5ea0,#8b6914)}
+.s2{border:1px solid rgba(196,146,42,.35)}.s2::before{background:linear-gradient(90deg,#c4922a,#d4a017)}
+.s3{border:1px solid rgba(106,138,154,.35)}.s3::before{background:linear-gradient(90deg,#4a6a7a,#6a8a9a)}
+.s4{border:1px solid rgba(139,26,26,.4)}.s4::before{background:linear-gradient(90deg,#6b0000,#8b1a1a)}
+hr{border:0;border-top:1px solid rgba(139,105,20,.2);margin:1.5rem 0}
+.footer{text-align:center;color:var(--text-dim);font-style:italic;padding:2rem 0}
+.mobile-header{display:none}
+/* notes tool */
+.notes-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+.notes-tab{background:transparent;color:var(--text-secondary);border:1px solid rgba(139,105,20,.35);border-radius:4px;padding:.4rem .9rem;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.08em;cursor:pointer}
+.notes-tab.active{background:rgba(139,105,20,.25);color:var(--gold-bright);border-color:var(--gold-light)}
+.notes-pane{display:none}.notes-pane.active{display:block}
+.notes-pane label{display:block;font-family:'Cinzel',serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);margin:1rem 0 .3rem}
+.notes-pane textarea{width:100%;min-height:110px;background:rgba(0,0,0,.25);color:var(--text-primary);border:1px solid rgba(139,105,20,.3);border-radius:6px;padding:.7rem;font-family:'Crimson Text',serif;font-size:16px;resize:vertical}
+.notes-pane textarea:focus{outline:none;border-color:var(--gold-light)}
+.btn{background:var(--gold);color:#fff;border:0;border-radius:4px;padding:.5rem 1.1rem;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.1em;cursor:pointer}
+.btn:hover{background:var(--gold-light);color:#1a1208}
+.notes-status{color:var(--text-dim);font-size:.85rem;margin-left:.75rem;font-style:italic}
+@media(max-width:900px){
+ .sidebar{transform:translateX(-100%);transition:transform .25s}.sidebar.open{transform:none}
+ .main{margin-left:0}.mobile-header{display:flex;align-items:center;position:sticky;top:0;z-index:30;background:var(--bg-sidebar);border-bottom:1px solid rgba(139,105,20,.3);padding:.6rem 1rem}
+ .mobile-header button{background:none;border:0;color:var(--gold-light);font-size:1.5rem;cursor:pointer;margin-right:.75rem}
+ .mobile-header span{font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.1em;color:var(--gold-light)}
+ .wrap{padding:1.5rem 1rem 3rem}.hero h1{font-size:1.8rem}.section-card{padding:1.25rem}
+}
+</style></head>
+<body>
+<div class="mobile-header"><button id="menu-btn" type="button" aria-label="Menu">&#9776;</button><span>THE REVELER'S STAGE</span></div>
+<aside class="sidebar" id="sidebar">
+ <div class="side-head"><div class="side-eyebrow">DM only</div><div class="side-title">Session 1</div><div class="side-sub">Run Sheet</div></div>
+ <nav><a class="nav-link" href="#before-anyone-arrives">Before anyone arrives</a><a class="nav-link" href="#tracking-panel-keep-visible">Tracking panel (keep visible)</a><a class="nav-link" href="#run-order-about-3-hours">Run order (about 3 hours)</a><a class="nav-link" href="#quick-numbers">Quick numbers</a><a class="nav-link" href="#endings">Endings</a><a class="nav-link" href="#rulings-to-remember">Rulings to remember</a><a class="nav-link" href="#if-it-stalls">If it stalls</a><a class="nav-link" href="#spotlight-make-sure-each-gets-one">Spotlight (make sure each gets one)</a><a class="nav-link" href="#after-the-session">After the session</a></nav>
+</aside>
+<div class="main"><div class="wrap">
+ <header class="hero"><h1>Session 1 Run Sheet: &quot;The Inheritance&quot;</h1><div class="sub">DM only. One page for Friday, October 16. Detail lives in `Session1_DM.md`, `Session1_Statblocks.md` and `Session1_Hazards.md`. About 3 hours including Session 0.</div><blockquote></blockquote></header>
+ <section class="section-card" id="before-anyone-arrives"><h2>Before anyone arrives</h2><ul>
+<li>[ ] AboveVTT scenes ready: <strong>McTavern</strong> (with overlay), <strong>Ground Floor</strong> (rest of house), <strong>Upper Floor</strong>, <strong>Cellar</strong>. Players' maps loaded; DM maps open on a second screen.</li>
+<li>[ ] <strong>Hearth tokens</strong> placed (lit/out), including the McTavern refuge hearth on the left wall.</li>
+<li>[ ] Stat block tokens placed: Harwick (65), Collector (45), Hounds x3 (16), Twins (14 each), Ashford (18), Luna (10).</li>
+<li>[ ] Hazard pips ready (T1-T6, G1, G2, G5-G8, U1-U4, C1-C6).</li>
+<li>[ ] Handouts open: six invitations, the will, guest list (<code>Session1_Handouts.html</code>).</li>
+<li>[ ] Session 0 answers in hand (<code>Session0_Questions.md</code>): lines and veils, darkvision, Butch's player and handle.</li>
+<li>[ ] Open items settled: Kurield's gear and AC, Wolfe's Healer's Kit, Hetfield's alignment.</li>
+<li>[ ] <strong>Test once:</strong> do AboveVTT token notes make dice clickable?</li>
+</ul></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="tracking-panel-keep-visible"><h2>Tracking panel (keep visible)</h2><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Track</th>
+<th>Start</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stage Fill</strong></td>
+<td>3</td>
+<td>Luna -1, Ashford redeemed -1, Ashford escapes +1, a player drops +1, a named NPC dies +1, heroic or funny -1</td>
+</tr>
+<tr>
+<td><strong>Night Clock</strong></td>
+<td>Midnight</td>
+<td>1:00 Entry Hall + Kitchen out; 3:00 Drawing Room + Study out; 4:30 Master Bedroom + Trophy Room + Portrait Gallery out; Dawn all out. <strong>Dining Room hearth never goes out.</strong></td>
+</tr>
+<tr>
+<td><strong>Hearths</strong></td>
+<td>8 lit</td>
+<td>Entry, Dining (refuge), Kitchen, Study, Drawing, Master, Trophy, Gallery</td>
+</tr>
+<tr>
+<td><strong>Hazard pips</strong></td>
+<td>0</td>
+<td>Per hazard, shared by the party; solved = reset</td>
+</tr>
+<tr>
+<td><strong>Luna</strong></td>
+<td>not freed</td>
+<td>needs "Edith Marrow" + dinner for six</td>
+</tr>
+<tr>
+<td><strong>Fragment #1 ("HOS")</strong></td>
+<td>not found</td>
+<td>Study bookcase</td>
+</tr>
+<tr>
+<td><strong>Harwick</strong></td>
+<td>asleep</td>
+<td>wakes at 1:00; hunts at 4:30</td>
+</tr>
+</tbody>
+</table></div></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="run-order-about-3-hours"><h2>Run order (about 3 hours)</h2><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Beat</th>
+<th>~Min</th>
+<th>What you do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><strong>Session 0</strong></td>
+<td>20</td>
+<td>Lines and veils, X-card, light check (only Butch and Sassy have darkvision; Rivet can make Goggles of Night)</td>
+</tr>
+<tr>
+<td>1</td>
+<td><strong>Act 1: the McTavern</strong></td>
+<td>25</td>
+<td>Invitations in pockets (mandatory), Ashford reads the will, lights die, Mordax in the mirror. <strong>Hetfield finds Milo's sword by the refuge hearth.</strong> Mordax: "Who let the cat in?" (the reflection stutters). <strong>1:00 chimes.</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Act 2: exploring</strong></td>
+<td>50</td>
+<td>Collector, Hounds, Luna, Twins (Statues and Hide-and-Seek), Ashford's secret, Study and Fragment #1. Hazards at every door. <strong>3:00 chimes.</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>The Flues</strong></td>
+<td>(inside Act 2/3)</td>
+<td>Eight levers, one rhyme line per lit hearth. Needs every player.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Act 3: the cellar</strong></td>
+<td>40</td>
+<td>Wine Cellar, Pantry (Mordax's second appearance), Hidden Chamber (Edith Marrow), Furnace Room (damper panel).</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Climax: Harwick</strong></td>
+<td>45</td>
+<td><strong>4:30 chimes.</strong> Only the McTavern hearth is lit. Fire, Release or Break.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Dawn</strong></td>
+<td>10</td>
+<td>Level 4, the road to Ashvale, the fiddle.</td>
+</tr>
+</tbody>
+</table></div></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="quick-numbers"><h2>Quick numbers</h2><div class="table-scroll"><table>
+<thead>
+<tr>
+<th>Creature</th>
+<th>HP</th>
+<th>AC</th>
+<th>Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Harwick</strong></td>
+<td>65</td>
+<td>14</td>
+<td>Life Drain +5 (<code>2d6+3</code>, CON DC 12); <strong>I Must Serve</strong> STR DC 13, drag 15 ft; cannot enter a room with a lit hearth</td>
+</tr>
+<tr>
+<td><strong>Collector</strong></td>
+<td>45</td>
+<td>17</td>
+<td>Slam +4 x2; both hit the same target = takes one item</td>
+</tr>
+<tr>
+<td><strong>Hounds x3</strong></td>
+<td>16</td>
+<td>13</td>
+<td>Chill Bite +5 (<code>1d6+3</code>, CON DC 11, STR -1 until rest); hunt by sound</td>
+</tr>
+<tr>
+<td><strong>Twins</strong></td>
+<td>14</td>
+<td>12</td>
+<td>Cold Hands +4; games, not fights</td>
+</tr>
+<tr>
+<td><strong>Ashford</strong></td>
+<td>18</td>
+<td>11</td>
+<td>coward; Master Bedroom key; redeemable</td>
+</tr>
+</tbody>
+</table></div></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="endings"><h2>Endings</h2><ul>
+<li><strong>Fire.</strong> All eight hearths lit (the Flues). Stage Fill -1 at your discretion.</li>
+<li><strong>Release.</strong> Name his grief and tell him he can stop (DC 14, advantage if Luna is free). Stage Fill -1.</li>
+<li><strong>Break.</strong> Take him to 0 HP; he retreats weeping. Turn Undead (DC 13) makes him flee. Stage Fill 0.</li>
+</ul></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="rulings-to-remember"><h2>Rulings to remember</h2><ul>
+<li>Only real hearth fire stops Harwick; magic light does not.</li>
+<li>Silence covers part of the Servant's Passage, not all of it.</li>
+<li>Faerie Fire outlines the Hounds but does not make them solid.</li>
+<li>Milo (bound to Hetfield's sword; near a lit hearth or when the sword is drawn): Hounds hesitate, T6 solved if she walks the keys, Release has advantage if she flops at Harwick's feet.</li>
+<li>Nothing kills outright. A hazard drop to 0 HP means the Twins pull the character through a passage; they wake in another room at 1 HP.</li>
+<li>One short rest, at the refuge hearth only.</li>
+<li>Tasha's is accepted as-is. No homebrew for the players.</li>
+</ul></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="if-it-stalls"><h2>If it stalls</h2><ul>
+<li>Table stuck: Luna will answer a question about the manor if she is working.</li>
+<li>Table split: use the Twins' passages to move a character.</li>
+<li>Table too safe: pick one hazard and let its tell be ignored once.</li>
+<li>Table in trouble: the McTavern hearth is always a refuge; use Ashford's Bardic Inspiration as a lifeline.</li>
+<li>Short on time: skip the Flues and let Fire come from hand-relighting.</li>
+</ul></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="spotlight-make-sure-each-gets-one"><h2>Spotlight (make sure each gets one)</h2><ul>
+<li>Hetfield: Ashford's confession; Harwick's Release.</li>
+<li>Butch: the Hounds in the Servant's Passage.</li>
+<li>Kurield: the wrongly shelved book, Fragment #1, Luna's dinner.</li>
+<li>Sassy: the Collector duel, the chandelier.</li>
+<li>Rivet: the flamethrower relights hearths; the Twins' toy soldier.</li>
+<li>Wolfe (Mockingbird): holding the passage; Magic Awareness; a wild surge.</li>
+</ul></section>
+<div class="divider">&#9901; &#9901; &#9901;</div>
+<section class="section-card" id="after-the-session"><h2>After the session</h2><ul>
+<li>[ ] Level everyone to 4.</li>
+<li>[ ] Record Stage Fill, Luna's status, fragment status, items still on the Trophy Room shelf.</li>
+<li>[ ] Update <code>Decisions_Log.md</code> and the DM Binder.</li>
+</ul></section>
+ <div class="footer"></div>
+</div></div>
+
+<script>
+(function(){
+  var links=document.querySelectorAll('.nav-link'), side=document.getElementById('sidebar');
+  var map={};links.forEach(function(l){map[l.getAttribute('href').slice(1)]=l;});
+  var cards=Array.prototype.slice.call(document.querySelectorAll('.section-card'));
+  function setActive(){
+    var cur=cards[0], line=window.innerHeight*0.3;
+    cards.forEach(function(c){if(c.getBoundingClientRect().top<=line)cur=c;});
+    links.forEach(function(l){l.classList.remove('active');});
+    if(cur&&map[cur.id])map[cur.id].classList.add('active');
+  }
+  window.addEventListener('scroll',setActive,{passive:true});setActive();
+  var btn=document.getElementById('menu-btn');
+  if(btn)btn.addEventListener('click',function(){side.classList.toggle('open');});
+  links.forEach(function(l){l.addEventListener('click',function(){side.classList.remove('open');});});
+})();
+</script>
+
+</body></html>
