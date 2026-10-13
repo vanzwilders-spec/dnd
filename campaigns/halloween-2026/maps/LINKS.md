@@ -2,6 +2,8 @@
 
 Paste these into AboveVTT's custom URL option. These links point at the `main` branch.
 
+Map grid: the three floor maps are 2560 x 1664 px at **64 px per square** (40 x 26 squares). The McTavern overlay stays at 30 px per square (1498 x 1236).
+
 | Map | URL |
 |---|---|
 | Ground floor (players) | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/players/Session1_Ground_Players.png |

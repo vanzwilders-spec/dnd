@@ -2,7 +2,7 @@
 
 *Master tracker. Updated whenever an item is finished, blocked or added. Status: [ ] open, [x] done, [~] in progress, [!] blocked (waiting on someone).*
 
-Last updated: Oct 13, 2026
+Last updated: Oct 13, 2026 (maps upgraded)
 
 ## A. Players and Session 0 (what the table sees)
 - [ ] Hetfield: alignment, personality, backstory (Jeff / Morgoth)
@@ -23,7 +23,8 @@ Last updated: Oct 13, 2026
 - [!] Hetfield's knife image (waiting on the DM)
 
 ## C. Maps and the table tool
-- [~] Visual upgrade of the generated maps: ground-floor before and after first, then the other floors
+- [x] Visual upgrade of the generated maps (textures, shadows, light pools, top-down statues); all three floors done Oct 13
+- [ ] Nice-to-have later: nicer statues, painted-style touches, cellar boiler pit and hanging figures, McTavern stand-in
 - [ ] Build the AboveVTT scenes from the `main` links (`campaigns/halloween-2026/maps/LINKS.md`)
 - [ ] Test the McTavern overlay alignment, hearth tokens and clickable dice in token notes
 - [x] Maps hosted and loading in AboveVTT (tested Oct 13)

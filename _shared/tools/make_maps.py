@@ -1,89 +1,174 @@
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageChops
 import math, random
-S=32; W,H=40,26
+import numpy as np
+S=64; K=S/32; W,H=40,26
 F="/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
 FS="/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-def font(sz,f=F): return ImageFont.truetype(f,sz)
-WOOD=(92,66,44); WOOD2=(78,55,36); STONE=(64,66,74); STONE2=(54,56,64)
-OUT=(22,26,38); WALL=(18,12,10); DOOR=(150,104,52)
+def font(sz,f=F): return ImageFont.truetype(f,int(sz*K))
+WOOD=(104,72,46); WOOD2=(70,48,30); STONE=(72,74,82); STONE2=(52,54,62)
+OUT=(14,16,26); WALL=(24,18,15); DOOR=(150,104,52)
 def P(x,y): return (x*S,y*S)
+def _w(w): return max(1,int(round(w*K)))
 
 def rect(d,x1,y1,x2,y2,fill,outline=None,w=1):
-    d.rectangle([x1*S,y1*S,x2*S,y2*S],fill=fill,outline=outline,width=w)
+    d.rectangle([x1*S,y1*S,x2*S,y2*S],fill=fill,outline=outline,width=_w(w))
+
+def _jit(c,rnd,a):
+    v=rnd.randint(-a,a); return tuple(max(0,min(255,x+v)) for x in c)
 
 def floor(d,r,kind):
     x1,y1,x2,y2=r
-    base=WOOD if kind=="wood" else STONE
-    alt=WOOD2 if kind=="wood" else STONE2
-    rect(d,x1,y1,x2,y2,base)
     rnd=random.Random(int(x1*7+y1*13))
     if kind=="wood":
+        # planks 0.5 square wide, running left-right, with staggered butt joints
         for yy in range(int(y1*2),int(y2*2)):
-            d.line([x1*S,yy*S/2,x2*S,yy*S/2],fill=alt,width=1)
-        for yy in range(int(y1*2),int(y2*2)):
-            xx=x1*S+rnd.randint(10,90)
+            py=yy*S/2; col=_jit(WOOD,rnd,10)
+            rect(d,x1,yy/2,x2,yy/2+.5,col)
+            d.line([x1*S,py,x2*S,py],fill=(40,26,16),width=_w(1.4))
+            d.line([x1*S,py+_w(1.5),x2*S,py+_w(1.5)],fill=_jit((126,92,60),rnd,4),width=1)
+            xx=x1*S+rnd.randint(20,200)
             while xx<x2*S:
-                d.line([xx,yy*S/2,xx,yy*S/2+S/2],fill=alt,width=1); xx+=rnd.randint(60,140)
+                d.line([xx,py,xx,py+S/2],fill=(40,26,16),width=_w(1.2))
+                for nx in (xx-6*K,xx+6*K): d.ellipse([nx-1.5*K,py+S/4-1.5*K,nx+1.5*K,py+S/4+1.5*K],fill=(46,32,20))
+                xx+=rnd.randint(180,420)
+            for _ in range(int((x2-x1)*1.2)):  # grain
+                gx=x1*S+rnd.random()*(x2-x1)*S; gy=py+rnd.random()*S/2
+                d.line([gx,gy,gx+rnd.randint(14,60)*K/2,gy],fill=_jit(WOOD2,rnd,6),width=1)
     else:
-        for xx in range(int(x1),int(x2)):
-            for yy in range(int(y1),int(y2)):
-                if (xx+yy)%2==0: rect(d,xx,yy,xx+1,yy+1,alt)
-                if rnd.random()<.15: d.ellipse([xx*S+8,yy*S+8,xx*S+16,yy*S+14],fill=(60,62,68))
+        rect(d,x1,y1,x2,y2,STONE2)
+        for yy in range(int(y1),int(y2)):
+            off=0 if yy%2==0 else .5
+            xx=x1-off
+            while xx<x2:
+                wd=1.0
+                a,b=max(xx,x1),min(xx+wd,x2)
+                if b>a:
+                    rect(d,a,yy,b,yy+1,_jit(STONE,rnd,9))
+                    d.rectangle([a*S,yy*S,b*S,(yy+1)*S],outline=(30,31,38),width=_w(1.6))
+                    if rnd.random()<.25: d.line([a*S+8*K,yy*S+10*K,a*S+22*K,yy*S+18*K],fill=(42,44,52),width=1)
+                xx+=wd
+
+def shadow_rect(d,x1,y1,x2,y2,off=.12):
+    pass
 
 def walls(d,rooms,doors,secret=None,show_secret=False):
-    for r in rooms: d.rectangle([r[0]*S,r[1]*S,r[2]*S,r[3]*S],outline=WALL,width=7)
+    for r in rooms: wall_box(d,r)
     for dr in doors: door(d,dr)
     if show_secret and secret:
         for dr in secret: door(d,dr,secret=True)
 
+def wall_box(d,r):
+    d.rectangle([r[0]*S,r[1]*S,r[2]*S,r[3]*S],outline=WALL,width=_w(11))
+    d.rectangle([r[0]*S+_w(5),r[1]*S+_w(3),r[2]*S-_w(5),r[3]*S-_w(5)],outline=(84,70,60),width=1)
+
 def door(d,dr,secret=False):
     x1,y1,x2,y2=dr[:4]
-    col=(150,60,120) if secret else DOOR
-    horiz = (y1==y2)
+    col=(170,80,140) if secret else DOOR
+    horiz=(y1==y2)
     if horiz:
-        d.line([x1*S+2,y1*S,x2*S-2,y1*S],fill=(112,80,55),width=11)
-        d.rectangle([x1*S+2,y1*S-4,x2*S-2,y1*S+4],outline=col,width=2)
+        d.rectangle([x1*S+2*K,y1*S-6*K,x2*S-2*K,y1*S+6*K],fill=(120,84,52),outline=(40,26,16),width=_w(2))
+        d.line([(x1+x2)*S/2,y1*S-6*K,(x1+x2)*S/2,y1*S+6*K],fill=(40,26,16),width=_w(1.5))
+        d.ellipse([x2*S-9*K,y1*S-2*K,x2*S-5*K,y1*S+2*K],fill=(210,170,70))
     else:
-        d.line([x1*S,y1*S+2,x1*S,y2*S-2],fill=(112,80,55),width=11)
-        d.rectangle([x1*S-4,y1*S+2,x1*S+4,y2*S-2],outline=col,width=2)
+        d.rectangle([x1*S-6*K,y1*S+2*K,x1*S+6*K,y2*S-2*K],fill=(120,84,52),outline=(40,26,16),width=_w(2))
+        d.line([x1*S-6*K,(y1+y2)*S/2,x1*S+6*K,(y1+y2)*S/2],fill=(40,26,16),width=_w(1.5))
+        d.ellipse([x1*S-2*K,y2*S-9*K,x1*S+2*K,y2*S-5*K],fill=(210,170,70))
     if secret:
-        d.line([x1*S,y1*S,x2*S,y2*S],fill=col,width=3)
+        d.line([x1*S,y1*S,x2*S,y2*S],fill=col,width=_w(3))
 
 def hearth(d,x,y,w,h,gold=False):
-    rect(d,x,y,x+w,y+h,(40,34,32),(15,12,10),3)
-    rect(d,x+.25,y+.25,x+w-.25,y+h-.25,(18,14,14))
-    if gold: d.rectangle([x*S+4,y*S+4,(x+w)*S-4,(y+h)*S-4],outline=(210,170,70),width=2)
+    rect(d,x,y,x+w,y+h,(58,50,48),(15,12,10),3)
+    rect(d,x+.2,y+.2,x+w-.2,y+h-.2,(12,8,8))
+    cx,cy=(x+w/2)*S,(y+h/2)*S
+    for i,(rr,c) in enumerate(((.28,(150,60,20)),(.18,(230,130,40)),(.09,(255,210,110)))):
+        e=rr*S*max(w,h)*1.6; d.ellipse([cx-e,cy-e,cx+e,cy+e],fill=c)
+    if gold: d.rectangle([x*S+4*K,y*S+4*K,(x+w)*S-4*K,(y+h)*S-4*K],outline=(210,170,70),width=_w(2))
 
 def stairs(d,x1,y1,x2,y2,horiz=True,label=None,dm=False):
-    n=int((x2-x1)*2 if not horiz else (y2-y1)*2)
-    rect(d,x1,y1,x2,y2,(120,105,85),(30,24,20),2)
+    rect(d,x1,y1,x2,y2,(128,112,92),(30,24,20),2)
     if horiz:
-        for i in range(1,int((y2-y1)*2)): d.line([x1*S,(y1+i/2)*S,x2*S,(y1+i/2)*S],fill=(70,60,50),width=2)
+        n=int((y2-y1)*3)
+        for i in range(1,n):
+            yy=(y1+i/3)*S; d.line([x1*S,yy,x2*S,yy],fill=(60,50,42),width=_w(2)); d.line([x1*S,yy+_w(2),x2*S,yy+_w(2)],fill=(160,142,118),width=1)
     else:
-        for i in range(1,int((x2-x1)*2)): d.line([(x1+i/2)*S,y1*S,(x1+i/2)*S,y2*S],fill=(70,60,50),width=2)
+        n=int((x2-x1)*3)
+        for i in range(1,n):
+            xx=(x1+i/3)*S; d.line([xx,y1*S,xx,y2*S],fill=(60,50,42),width=_w(2)); d.line([xx+_w(2),y1*S,xx+_w(2),y2*S],fill=(160,142,118),width=1)
 
 def label(d,txt,x,y,sz=17,col=(235,225,200)):
     f=font(sz)
-    for dx,dy in ((-1,0),(1,0),(0,1),(0,-1)):
-        d.text((x*S+dx,y*S+dy),txt,font=f,fill=(10,8,8),anchor="mm")
+    for dx,dy in ((-1,0),(1,0),(0,1),(0,-1),(1,1),(-1,-1)):
+        d.text((x*S+dx*K,y*S+dy*K),txt,font=f,fill=(10,8,8),anchor="mm")
     d.text((x*S,y*S),txt,font=f,fill=col,anchor="mm")
 
 def hazard(d,x,y,txt):
-    r=13
-    d.ellipse([x*S-r,y*S-r,x*S+r,y*S+r],fill=(170,36,36),outline=(255,220,200),width=2)
+    r=13*K
+    d.ellipse([x*S-r,y*S-r,x*S+r,y*S+r],fill=(170,36,36),outline=(255,220,200),width=_w(2))
     d.text((x*S,y*S),txt,font=font(13,FS),fill=(255,255,255),anchor="mm")
 
 def grid(d):
     for i in range(W+1):
-        d.line([i*S,0,i*S,H*S],fill=(170,170,170) if i%5==0 else (112,112,112),width=1)
+        d.line([i*S,0,i*S,H*S],fill=(170,170,170,) if i%5==0 else (112,112,112),width=1)
     for j in range(H+1):
         d.line([0,j*S,W*S,j*S],fill=(170,170,170) if j%5==0 else (112,112,112),width=1)
 
 def ball(d,cx,cy,r,fill):
-    d.ellipse([(cx-r)*S,(cy-r)*S,(cx+r)*S,(cy+r)*S],fill=fill,outline=(15,10,10),width=2)
+    d.ellipse([(cx-r)*S+3*K,(cy-r)*S+4*K,(cx+r)*S+3*K,(cy+r)*S+4*K],fill=(10,8,8))  # shadow
+    d.ellipse([(cx-r)*S,(cy-r)*S,(cx+r)*S,(cy+r)*S],fill=fill,outline=(15,10,10),width=_w(2))
+    hl=tuple(min(255,c+50) for c in fill[:3])
+    d.ellipse([(cx-r*.5)*S,(cy-r*.6)*S,(cx-r*.05)*S,(cy-r*.15)*S],fill=hl)
+
+
+def statue(d,cx,cy,facing,pose=0):
+    """Top-down stone statue on a square plinth. facing=(dx,dy) direction it looks."""
+    im=d._image; L=int(2.2*S); c=L//2
+    lay=Image.new("RGBA",(L,L),(0,0,0,0)); g=ImageDraw.Draw(lay)
+    # plinth (not rotated look: drawn then rotated with the layer, fine)
+    p=int(.58*S)
+    g.rectangle([c-p,c-p,c+p,c+p],fill=(96,98,104,255),outline=(30,30,36,255),width=_w(2))
+    g.rectangle([c-p+4*K,c-p+4*K,c+p-4*K,c+p-4*K],outline=(138,140,148,255),width=_w(1.5))
+    stone=(176,178,184,255); dark=(112,114,122,255); hi=(214,216,222,255)
+    # shoulders / torso (wide ellipse), arms by pose, head, hair
+    g.ellipse([c-.46*S,c-.2*S,c+.46*S,c+.24*S],fill=stone,outline=dark,width=_w(2))
+    arms={0:((-.5,-.05,-.2,-.5),(.5,-.05,.2,-.5)),   # both hands raised forward
+          1:((-.52,.1,-.3,-.42),(.5,-.1,.5,.32)),    # one raised, one at side
+          2:((-.5,-.1,-.5,.32),(.5,-.1,.5,.32)),     # arms at sides
+          3:((-.46,0,-.1,-.5),(.46,0,.46,-.1))}[pose%4]
+    for (x1,y1,x2,y2) in arms:
+        g.line([c+x1*S,c+y1*S,c+x2*S,c+y2*S],fill=stone,width=_w(11))
+        g.ellipse([c+x2*S-6*K,c+y2*S-6*K,c+x2*S+6*K,c+y2*S+6*K],fill=hi)
+    g.ellipse([c-.2*S,c-.2*S,c+.2*S,c+.2*S],fill=hi,outline=dark,width=_w(2))     # head
+    g.pieslice([c-.2*S,c-.2*S,c+.2*S,c+.2*S],200,340,fill=dark)                    # hair at the back
+    g.polygon([(c-3*K,c-.2*S+2*K),(c+3*K,c-.2*S+2*K),(c,c-.2*S-5*K)],fill=hi)       # nose
+    ang=math.degrees(math.atan2(-facing[0],-facing[1]))
+    lay=lay.rotate(ang,resample=Image.BICUBIC)
+    sh=Image.new('RGBA',lay.size,(0,0,0,0)); ImageDraw.Draw(sh).rectangle([c-p+6*K,c-p+8*K,c+p+6*K,c+p+8*K],fill=(0,0,0,150)); sh=sh.rotate(ang,resample=Image.BICUBIC,center=(c-6*K,c-8*K)) if False else sh
+    im.paste(sh,(int(cx*S-c),int(cy*S-c)),sh)
+    im.paste(lay,(int(cx*S-c),int(cy*S-c)),lay)
 
 def furn(d,x1,y1,x2,y2,fill=(60,40,28)):
+    d.rectangle([x1*S+4*K,y1*S+5*K,x2*S+4*K,y2*S+5*K],fill=(8,6,6))  # drop shadow
     rect(d,x1,y1,x2,y2,fill,(20,14,10),2)
+    d.line([x1*S+2*K,y1*S+2*K,x2*S-2*K,y1*S+2*K],fill=tuple(min(255,c+40) for c in fill),width=_w(2))
+    d.line([x1*S+2*K,y1*S+2*K,x1*S+2*K,y2*S-2*K],fill=tuple(min(255,c+25) for c in fill),width=_w(2))
+
+def finish(im,glows,dm):
+    """Light pools from hearths, grain noise, vignette."""
+    w,h=im.size
+    a=np.asarray(im.convert("RGB")).astype(np.float32)
+    rng=np.random.default_rng(7)
+    a+=rng.normal(0,3.2,a.shape[:2])[:,:,None]            # film grain
+    yy,xx=np.mgrid[0:h,0:w].astype(np.float32)
+    light=np.zeros((h,w),np.float32)
+    for gx,gy in glows:
+        dist=np.hypot(xx-gx*S,yy-gy*S)/(S*7.5)
+        light+=np.clip(1-dist,0,1)**2
+    light=np.clip(light,0,1)
+    warm=np.stack([light*34,light*17,light*2],-1)
+    a=a+warm                                               # warm pools
+    vig=np.hypot((xx-w/2)/(w/2),(yy-h/2)/(h/2))
+    a*= (1-0.28*np.clip(vig-.55,0,1)**1.4*1.6)[:,:,None]   # vignette
+    return Image.fromarray(np.clip(a,0,255).astype(np.uint8))
 
 # ----------------- GROUND -----------------
 def ground(dm):
@@ -96,12 +181,15 @@ def ground(dm):
             for hx in range(int(r[0]*S),int(r[2]*S),24): d.line([hx,r[1]*S,hx+(r[3]-r[1])*S,r[3]*S],fill=(44,46,60),width=2)
         else: floor(d,r,"wood")
     # rugs
-    rect(d,16,16,22,22,(110,40,44),(60,20,24),3)
+    rect(d,16,16,22,22,(112,38,44),(48,16,20),3); rect(d,16.35,16.35,21.65,21.65,None,(212,170,90),2); rect(d,16.6,16.6,21.4,21.4,None,(70,24,30),1)
+    for i in range(6):
+        for j in range(6):
+            if (i+j)%2==0: rect(d,17+i*.67-.2,17+j*.67-.2,17+i*.67+.2,17+j*.67+.2,(96,30,38))
     # study shelves
     for yy in (3,): furn(d,28.5,2.4,37.5,3.4,(60,38,24))
     furn(d,28.2,3.5,29.2,13,(60,38,24)); furn(d,34,7,36,9,(80,56,36))
     # drawing: statues, piano
-    for (sx,sy) in ((29,16.5),(33,16),(36,19),(30,22),(34,22)): ball(d,sx,sy,.55,(170,170,175))
+    for i,(sx,sy) in enumerate(((29,16.5),(33,16),(36,19),(30,22),(34,22))): statue(d,sx,sy,(32.5-sx,19.5-sy),i)
     furn(d,31,18.5,34,20.5,(30,24,24))
     # entry
     ball(d,20,19,1.2,(200,170,80)) if dm else None
@@ -117,7 +205,7 @@ def ground(dm):
     doors=[(19,24,21,24),(19,14,21,14),(12,7,12,9),(28,7,28,9),(26,18,26,20),(14,18,14,20),(6,18,6,20),(3,14,5,14)]
     walls(d,list(rooms.values()),doors)
     # house outer weight
-    d.rectangle([2*S,2*S,38*S,24*S],outline=WALL,width=10)
+    d.rectangle([2*S,2*S,38*S,24*S],outline=WALL,width=int(10*K))
     if dm:
         grid(d)
         for n,r in rooms.items():
@@ -129,11 +217,11 @@ def ground(dm):
         label(d,"front door (storm)",20,23.4,10,(200,200,230)); label(d,"chandelier",20,17.6,10,(30,20,10))
         # secret passages
         for pts in (((32,24),(32,25.1),(4,25.1),(4,24)),):
-            d.line([P(*p) for p in pts],fill=(200,70,150),width=4)
+            d.line([P(*p) for p in pts],fill=(200,70,150),width=int(4*K))
             label(d,"S1 secret passage: Drawing Room <-> Servant's Passage",18,25.55,10,(230,120,190))
         hazards=[("G1",24,17),("G2",20,19),("G5",33,7),("G6",33,21.5),("G7",4,16),("G8",5,21)]
         for h in hazards: hazard(d,h[1],h[2],h[0])
-        d.line([P(36,3),P(36.8,3.8)],fill=(200,70,150),width=4); label(d,"S2",36,3.8,12,(230,120,190))
+        d.line([P(36,3),P(36.8,3.8)],fill=(200,70,150),width=int(4*K)); label(d,"S2",36,3.8,12,(230,120,190))
     else:
         pass
     return im
@@ -160,14 +248,14 @@ def upper(dm):
     doors=[(19,8,21,8),(12,9,12,11),(12,16,12,18),(12,21,12,23),(28,16,28,18),(28,21,28,23)]
     master=[(28,9,28,11)]
     walls(d,list(rooms.values()),doors+master)
-    d.rectangle([2*S,2*S,38*S,24*S],outline=WALL,width=10)
+    d.rectangle([2*S,2*S,38*S,24*S],outline=WALL,width=int(10*K))
     if dm:
         grid(d)
         for n,r in rooms.items():
             label(d,n,(r[0]+r[2])/2,(r[1]+r[3])/2+(3 if n=="Upper Hall" else 0),16 if "Guest" not in n else 13)
         label(d,"DOWN",24,19,16)
         label(d,"locked (key: Ashford)",28.1,10,10,(255,200,120))
-        d.line([P(36,3),P(36.8,3.8)],fill=(200,70,150),width=4); label(d,"S2 secret passage to Study",33.4,10.5,11,(230,120,190))
+        d.line([P(36,3),P(36.8,3.8)],fill=(200,70,150),width=int(4*K)); label(d,"S2 secret passage to Study",33.4,10.5,11,(230,120,190))
         for h in [("U1",7,5.5),("U2",25,5),("U3",8,12.5),("U4",20,14)]: hazard(d,h[1],h[2],h[0])
     return im
 
@@ -198,7 +286,7 @@ def cellar(dm):
     if not dm:
         # secret door looks like wall
         pass
-    d.rectangle([2*S,2*S,26*S,24*S],outline=WALL,width=10)
+    d.rectangle([2*S,2*S,26*S,24*S],outline=WALL,width=int(10*K))
     if dm:
         grid(d)
         for n,r in rooms.items(): label(d,n,(r[0]+r[2])/2,(r[1]+r[3])/2+(4 if n=="Wine Cellar" else 0),16)
@@ -210,7 +298,11 @@ def cellar(dm):
         for h in [("C1",8,13),("C2",4,17),("C3",20,21),("C4",21,4.5),("C5",17,9),("C6",33,8)]: hazard(d,h[1],h[2],h[0])
     return im
 
+import sys
+OUTD=sys.argv[1] if len(sys.argv)>1 else "."
+GLOW={"Ground":[(14.6,22),(37.4,8),(37.4,19)],"Upper":[(7,2.6),(20,2.6),(37.4,8)],"Cellar":[(21,7.5)]}
 for name,fn in (("Ground",ground),("Upper",upper),("Cellar",cellar)):
-    fn(True).save(f"maps/Session1_{name}_DM.png")
-    fn(False).save(f"maps/Session1_{name}_Players.png")
+    for dm,tag in ((True,"DM"),(False,"Players")):
+        im=finish(fn(dm),GLOW[name],dm)
+        im.save(f"{OUTD}/Session1_{name}_{tag}.png",optimize=True)
 print("ok")
