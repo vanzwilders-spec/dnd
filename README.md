@@ -1,24 +1,16 @@
-# Wednesday’s Warriors: Waterdeep Campaign
+# D&D
 
-This repository is the single source of truth for the D&D 5e campaign “Wednesday’s Warriors,” set in Waterdeep and using Waterdeep: Dragon Heist as the primary adventure framework.
+One repo for all campaigns. Each campaign lives in `campaigns/<name>/` with the same layout.
 
-## Structure
-- **sessions/**: Raw transcripts or expanded notes for each session
-- **summaries/**: Clean recaps for each session
-- **prep/**: Next-session prep and run sheets
-- **plots/**: Active plots, open threads, and campaign stakes
-- **npcs/**: NPC dossiers
-- **items/**: Artifact notes, properties, and ownership
-- **locations/**: Places, factions, and hazards
-- **templates/**: Reference templates (do not modify unless requested)
+| Campaign | Folder | Status |
+|---|---|---|
+| The Reveler's Stage (Halloween 2026, "No Shot.....In hell") | [`campaigns/halloween-2026/`](campaigns/halloween-2026/README.md) | Active; Session 1 is Fri Oct 16, 2026 |
+| Wednesday's Warriors (Waterdeep: Dragon Heist) | [`campaigns/wednesdays-warriors/`](campaigns/wednesdays-warriors/README.md) | Ended; saved for later |
 
-## Canonical Sources
-1. This repository (facts at the table)
-2. Official D&D 5e rules (PHB/DMG/MM)
-3. Waterdeep: Dragon Heist (WDH) for city-specific details
+## Layout
+- `campaigns/` : one folder per campaign (`dm/`, `players/`, `maps/`, `sessions/`, `world/`)
+- `_shared/tools/` : map scripts and the HTML build script
+- `_shared/templates/campaign-skeleton/` : copy this to start a new campaign
+- `_shared/rules/` : house rulings reused across campaigns
 
-## Wiki Links
-Use wiki-style links (e.g., [[Stone of Golorr]], [[Eustace Staget]]) for cross-referencing.
-
-## Safety Tools
-- Fade-to-black, lines/veils, and player consent are always in effect.
+Wednesday's Warriors keeps its original folders (`sessions/`, `summaries/`, `prep/`, `plots/`) and was not reorganized into the new skeleton.
