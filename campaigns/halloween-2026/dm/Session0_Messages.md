@@ -16,7 +16,7 @@
 >
 > **Optional:** three private lines for me about your character: one thing they fear, one thing they value more than they admit, and one thing they would sacrifice to protect.
 >
-> **Player Guide:** [link goes here once GitHub Pages is on]. It is spoiler-free.
+> **Player Guide:** https://vanzwilders-spec.github.io/dnd/campaigns/halloween-2026/players/Player_Guide.html. It is spoiler-free.
 >
 > Each of you will get one private message from me with something that arrived for your character. Keep it to yourself until Friday. See you then.
 
