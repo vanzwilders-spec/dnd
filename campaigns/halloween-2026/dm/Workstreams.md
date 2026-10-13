@@ -24,6 +24,8 @@ Last updated: Oct 13, 2026 (maps upgraded)
 
 ## C. Maps and the table tool
 - [x] Visual upgrade of the generated maps (textures, shadows, light pools, top-down statues); all three floors done Oct 13
+- [x] DM reference sheets: cartographer-style frame, legend, hazard key, scale bar, compass (all three floors)
+- [ ] Player-facing handout versions of the maps (framed, no hazards or secrets), if wanted
 - [ ] Nice-to-have later: nicer statues, painted-style touches, cellar boiler pit and hanging figures, McTavern stand-in
 - [ ] Build the AboveVTT scenes from the `main` links (`campaigns/halloween-2026/maps/LINKS.md`)
 - [ ] Test the McTavern overlay alignment, hearth tokens and clickable dice in token notes

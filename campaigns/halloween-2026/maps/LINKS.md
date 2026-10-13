@@ -13,3 +13,13 @@ Map grid: the three floor maps are 2560 x 1664 px at **64 px per square** (40 x 
 | Ground floor (DM) | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_Ground_DM.png |
 | Upper floor (DM) | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_Upper_DM.png |
 | Cellar (DM) | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_Cellar_DM.png |
+
+## DM reference sheets (framed, with legend, hazard key, scale and compass)
+
+For printing or viewing on a phone; not for the VTT grid.
+
+| Sheet | URL |
+|---|---|
+| Ground floor | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_Ground_DM_Sheet.png |
+| Upper floor | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_Upper_DM_Sheet.png |
+| Cellar floor | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_Cellar_DM_Sheet.png |

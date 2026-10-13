@@ -298,11 +298,12 @@ def cellar(dm):
         for h in [("C1",8,13),("C2",4,17),("C3",20,21),("C4",21,4.5),("C5",17,9),("C6",33,8)]: hazard(d,h[1],h[2],h[0])
     return im
 
-import sys
-OUTD=sys.argv[1] if len(sys.argv)>1 else "."
-GLOW={"Ground":[(14.6,22),(37.4,8),(37.4,19)],"Upper":[(7,2.6),(20,2.6),(37.4,8)],"Cellar":[(21,7.5)]}
-for name,fn in (("Ground",ground),("Upper",upper),("Cellar",cellar)):
-    for dm,tag in ((True,"DM"),(False,"Players")):
-        im=finish(fn(dm),GLOW[name],dm)
-        im.save(f"{OUTD}/Session1_{name}_{tag}.png",optimize=True)
-print("ok")
+if __name__=="__main__":
+    import sys
+    OUTD=sys.argv[1] if len(sys.argv)>1 else "."
+    GLOW={"Ground":[(14.6,22),(37.4,8),(37.4,19)],"Upper":[(7,2.6),(20,2.6),(37.4,8)],"Cellar":[(21,7.5)]}
+    for name,fn in (("Ground",ground),("Upper",upper),("Cellar",cellar)):
+        for dm,tag in ((True,"DM"),(False,"Players")):
+            im=finish(fn(dm),GLOW[name],dm)
+            im.save(f"{OUTD}/Session1_{name}_{tag}.png",optimize=True)
+    print("ok")
