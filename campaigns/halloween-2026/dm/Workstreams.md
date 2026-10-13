@@ -2,7 +2,7 @@
 
 *Master tracker. Updated whenever an item is finished, blocked or added. Status: [ ] open, [x] done, [~] in progress, [!] blocked (waiting on someone).*
 
-Last updated: Oct 13, 2026 (maps upgraded)
+Last updated: Oct 13, 2026
 
 ## A. Players and Session 0 (what the table sees)
 - [ ] Hetfield: alignment, personality, backstory (Jeff / Morgoth)
@@ -28,6 +28,8 @@ Last updated: Oct 13, 2026 (maps upgraded)
 - [ ] Player-facing handout versions of the maps (framed, no hazards or secrets), if wanted
 - [ ] Nice-to-have later: nicer statues, painted-style touches, cellar boiler pit and hanging figures, McTavern stand-in
 - [ ] Build the AboveVTT scenes from the `main` links (`campaigns/halloween-2026/maps/LINKS.md`)
+- [ ] McTavern original file: copy it into the campaign folder (`maps/source/`) so I can align the overlay exactly and make a DM reference sheet. Only the McTavern uses an original file; all other maps are generated.
+- [ ] Decide the McTavern's role: (1) opening scene and refuge only, (2) hub every route returns to, or (3) the frame for all four sessions
 - [ ] Test the McTavern overlay alignment, hearth tokens and clickable dice in token notes
 - [x] Maps hosted and loading in AboveVTT (tested Oct 13)
 
