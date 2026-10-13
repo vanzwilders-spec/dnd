@@ -13,4 +13,3 @@ One repo for all campaigns. Each campaign lives in `campaigns/<name>/` with the 
 - `_shared/templates/campaign-skeleton/` : copy this to start a new campaign
 - `_shared/rules/` : house rulings reused across campaigns
 
-Wednesday's Warriors keeps its original folders (`sessions/`, `summaries/`, `prep/`, `plots/`) and was not reorganized into the new skeleton.

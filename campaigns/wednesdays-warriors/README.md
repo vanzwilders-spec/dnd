@@ -4,13 +4,14 @@ This repository is the single source of truth for the D&D 5e campaign “Wednesd
 
 ## Structure
 - **sessions/**: Raw transcripts or expanded notes for each session
-- **summaries/**: Clean recaps for each session
-- **prep/**: Next-session prep and run sheets
-- **plots/**: Active plots, open threads, and campaign stakes
-- **npcs/**: NPC dossiers
-- **items/**: Artifact notes, properties, and ownership
-- **locations/**: Places, factions, and hazards
-- **templates/**: Reference templates (do not modify unless requested)
+  - **sessions/summaries/**: Clean recaps for each session
+  - **sessions/prep/**: Next-session prep and run sheets
+- **world/**: Campaign canon
+  - **world/plots/**: Active plots, open threads, and campaign stakes
+  - **world/npcs/**: NPC dossiers
+  - **world/items/**: Artifact notes, properties, and ownership
+  - **world/locations/**: Places, factions, and hazards
+- **dm/**, **players/**, **maps/**: DM-only notes, player handouts, and VTT maps (see the campaign skeleton in `_shared/templates/`)
 
 ## Canonical Sources
 1. This repository (facts at the table)
