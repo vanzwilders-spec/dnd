@@ -28,7 +28,8 @@ Last updated: Oct 13, 2026
 - [ ] Player-facing handout versions of the maps (framed, no hazards or secrets), if wanted
 - [ ] Nice-to-have later: nicer statues, painted-style touches, cellar boiler pit and hanging figures, McTavern stand-in
 - [ ] Build the AboveVTT scenes from the `main` links (`campaigns/halloween-2026/maps/LINKS.md`)
-- [ ] McTavern original file: copy it into the campaign folder (`maps/source/`) so I can align the overlay exactly and make a DM reference sheet. Only the McTavern uses an original file; all other maps are generated.
+- [x] McTavern original saved locally in `maps/source/` (private, never pushed); overlay rebuilt and aligned to the real art Oct 13. Only the McTavern uses an original file; all other maps are generated.
+- [ ] McTavern DM reference sheet (framed, legend, hazard key) built from the original, for private use only
 - [ ] Decide the McTavern's role: (1) opening scene and refuge only, (2) hub every route returns to, or (3) the frame for all four sessions
 - [ ] Test the McTavern overlay alignment, hearth tokens and clickable dice in token notes
 - [x] Maps hosted and loading in AboveVTT (tested Oct 13)
