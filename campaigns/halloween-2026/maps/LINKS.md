@@ -14,6 +14,13 @@ Map grid: the three floor maps are 2560 x 1664 px at **64 px per square** (40 x 
 | Upper floor (DM) | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_Upper_DM.png |
 | Cellar (DM) | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/dm/Session1_Cellar_DM.png |
 
+## The McTavern (the table's usual tavern map, the AboveVTT default image)
+
+| File | URL |
+|---|---|
+| Original, no overlay (1501 x 1240) | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/players/McTavern_Original.png |
+| With overlay v1 (hearth, T1-T6, S3, doors, labels) | https://raw.githubusercontent.com/vanzwilders-spec/dnd/main/campaigns/halloween-2026/maps/players/McTavern_Map_With_Overlay_v1.png |
+
 ## DM reference sheets (framed, with legend, hazard key, scale and compass)
 
 For printing or viewing on a phone; not for the VTT grid.
