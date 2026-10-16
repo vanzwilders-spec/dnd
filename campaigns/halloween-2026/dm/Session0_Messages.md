@@ -34,7 +34,7 @@ You are cordially invited to attend the reading of the will of the late Lord Oct
 Dinner will be served.
 ```
 
-### Butch (player and handle still to confirm)
+### Butch (Viktor / _Unnamed_)
 
 Intro line: "This arrived for your character. Keep it to yourself until Friday."
 

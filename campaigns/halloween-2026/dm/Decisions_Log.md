@@ -64,7 +64,7 @@
 
 ## Open
 
-1. Who plays Butch, plus his handle. (Dominic's handle: dominoswolfpack.)
+1. ~~Who plays Butch~~ **Viktor** (D&D Beyond handle `_Unnamed_`), confirmed Oct 16. Dominic's handle is now domfraracio.
 2. Hetfield's alignment (blank on the sheet).
 3. Fragment #2 (parked).
 4. Sessions 2 to 4 each need their own single safe space. (Session 1's refuge is the McTavern's hearth.)

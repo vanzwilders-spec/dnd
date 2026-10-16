@@ -22,7 +22,7 @@
 ### Butch, Rogue 3 (Assassin)
 - **Bonds are blank.** What or who does Butch care about, even grudgingly?
 - **Backstory is blank.**
-- **Player handle:** the campaign page shows none. Who plays Butch?
+- **Player handle:** Viktor, D&D Beyond handle `_Unnamed_` (confirmed Oct 16).
 - **A moment of respect.** "Murder hobo" and Alcoholism are on the sheet. Confirm how far the player wants the evil to go against other party members (the DM will keep it from turning the table on anyone).
 
 ### Lyssandria "Sassy" Elmwood (FelicitySkye), Rogue 3 (Swashbuckler)

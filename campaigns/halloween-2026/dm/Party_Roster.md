@@ -5,7 +5,7 @@
 | Character | HP | AC | Darkvision | Alignment | What changed since Oct 12 |
 |---|---|---|---|---|---|
 | Hetfield | 25 | 14 | no | **Chaotic Good** (was blank) | Dancing Lights swapped for **Light**; carries 2 daggers (not six); 33 gp |
-| Butch | 21 | 15 | 60 ft | Lawful Evil | No changes (last edit Oct 12). Player still under the DM's account |
+| Butch | 21 | 15 | 60 ft | Lawful Evil | No changes (last edit Oct 12). Played by **Viktor** |
 | Kurield | 24 | **11** | no | **Neutral Good** (was CG) | Gear added: chain shirt, shield, mace, emblem (holy symbol), 2 lamps, 5 oil, holy water, cook's utensils, iron pot, 33 gp. **Armor and shield not equipped** (would be AC 16). Prepared spells now: Cure Wounds, Goodberry, Purify Food and Drink, Prayer of Healing, Lesser Restoration, Sleep (no Silence, Detect Thoughts, Zone of Truth or Detect Magic). Mark of Hospitality magic unchanged. Bonds/ideals/flaws written |
 | Sassy | 24 | 14 | 60 ft | Chaotic Good | Backstory written. **Her most prized possession is her leatherworker's tools**, a gift from the leatherworker who took her in: a candidate for her signature item |
 | Rivet | 30 | 18 | no | Chaotic Good | Personality written; **his Eldritch Cannon is named "Thunk"** and he treats it as a companion. Still carries Shield +1 and Wand of the War Mage +1 (no Goggles of Night yet) |
@@ -21,7 +21,7 @@ Every sheet also lists "Dark Bargain", "Character Threads" and "Runestones" as f
 | # | Character | Player (D&D Beyond handle) | Level | Species | Class / Subclass |
 |---|---|---|---|---|---|
 | 1 | "J" Hetfield | Skorrge60675 (Jeff; Discord: Morgoth) | 3 | Human | Bard, College of Eloquence (TCoE) |
-| 2 | Butch | _Unnamed_ (sheet says Vanzwilder; your export) | 3 | Goblin | Rogue, Assassin |
+| 2 | Butch | **Viktor**; handle `_Unnamed_` (confirmed Oct 16) | 3 | Goblin | Rogue, Assassin |
 | 3 | Kurield Valeren | Thad (Discord) | 3 | Halfling | Cleric, Knowledge Domain |
 | 4 | Lyssandria "Sassy" Elmwood | FelicitySkye | 3 | Elf | Rogue, Swashbuckler (SCAG) |
 | 5 | R-80085 "Rivet" | Camjo13 | 3 | Warforged | Artificer, Artillerist |
@@ -121,7 +121,7 @@ Barbarian 3 (Path of Wild Magic, TCoE), Goliath (Storm Giant ancestry), Hermit b
 
 ## Open items
 
-1. Who plays Butch, plus his handle. (Dominic's handle is dominoswolfpack.)
+1. ~~Who plays Butch~~ Viktor, handle `_Unnamed_` (Oct 16). Dominic's handle is now domfraracio.
 2. Hetfield's alignment (blank on the sheet).
 3. Anything on the sheets that changes encounter tuning (Armor Class, a signature magic item, a resistance).
 4. Private "What It Knows About You" lines from each player, if you want them.

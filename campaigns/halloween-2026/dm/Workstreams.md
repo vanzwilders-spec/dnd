@@ -6,11 +6,11 @@ Last updated: Oct 13, 2026
 
 ## A. Players and Session 0 (what the table sees)
 - [ ] Hetfield: alignment, personality, backstory (Jeff / Morgoth)
-- [ ] Butch: player and handle, backstory, bonds
+- [ ] Butch: backstory, bonds (player: **Viktor**, D&D Beyond handle `_Unnamed_`, confirmed Oct 16)
 - [ ] Kurield: what he knows going in (suggested: a will reading, knows no one, nothing wrong until the doors lock); gear (Thad)
 - [!] Rivet: prepared spells (Cam is checking)
 - [!] Wolfe: Healer's Kit (Dom's dad is adding it)
-- [~] Send the Session 0 messages: drafted in `dm/Session0_Messages.md` (table note and six private invitations); waiting on the DM to send, and on Butch's player
+- [~] Send the Session 0 messages: drafted in `dm/Session0_Messages.md` (table note and six private invitations); waiting on the DM to send, and Butch's player is Viktor
 - [x] GitHub Pages is live (Oct 13). Player Guide: https://vanzwilders-spec.github.io/dnd/campaigns/halloween-2026/players/Player_Guide.html
 - [ ] Character shareables ("What It Knows About You", optional one-page cards)
 - [ ] Recheck the Player Guide against the current story

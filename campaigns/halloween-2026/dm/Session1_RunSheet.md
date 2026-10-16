@@ -9,8 +9,8 @@
 - [ ] Stat block tokens placed: Harwick (65), Collector (45), Hounds x3 (16), Twins (14 each), Ashford (18), Luna (10).
 - [ ] Hazard pips ready (T1-T6, G1, G2, G5-G8, U1-U4, C1-C6).
 - [ ] Handouts open: six invitations, the will, guest list (`Session1_Handouts.html`).
-- [ ] Session 0 answers in hand (`Session0_Questions.md`): lines and veils, darkvision, Butch's player and handle.
-- [ ] Open items: Kurield must **equip** his chain shirt and shield (sheet AC 11, should be 16). Butch's player. (Wolfe's Healer's Kit and Hetfield's alignment are done.)
+- [ ] Session 0 answers in hand (`Session0_Questions.md`): lines and veils, darkvision. (Butch is Viktor.)
+- [ ] Open items: Kurield must **equip** his chain shirt and shield (sheet AC 11, should be 16). (Wolfe's Healer's Kit and Hetfield's alignment are done.)
 - [ ] **Test once:** do AboveVTT token notes make dice clickable?
 
 ## Tracking panel (keep visible)
