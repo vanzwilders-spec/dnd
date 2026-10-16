@@ -94,7 +94,8 @@ Let the party roam. The goals are: isolation (split them), cooperation (the Flue
 Shadow stat block, translucent dogs. **They hunt by sound.** [ORIGINAL] The party must cross the Servant's Passage to reach the cellar in silence: whisper, no armor clatter, no cantrips. Stealth or clever noise (a thrown coin to lure them). Their touch is a **chill**, not Strength drain: Strength can't drop below 1 and it passes after a rest. [DECIDED] They reform after an hour; they cannot be permanently killed. Butch's moment.
 
 **Table rulings** [NEW, proposed]:
-- **Silence** (Kurield, 2nd level) lets the party cross a 20-ft stretch unheard, but it is concentration and a fixed sphere, so it covers part of the passage, not all of it. A clever, expensive solution; allow it.
+- **Sleep** (Kurield has it prepared) does nothing to Harwick, the Hounds or the Collector: 2024 Sleep fails on creatures immune to exhaustion. It works on Ashford.
+- **Silence** (nobody has it prepared as of the Oct 16 sheets; Kurield could prepare it later) lets the party cross a 20-ft stretch unheard, but it is concentration and a fixed sphere, so it covers part of the passage, not all of it. A clever, expensive solution; allow it.
 - **Continual Flame** and other magic light do not stop Harwick. Only real hearth fire does.
 - **Turn Undead** works fully on Harwick [DECIDED, Oct 16]: he is **not** immune to frightened. On a failed save he is Frightened and Incapacitated for 1 minute and flees; it ends early if he takes damage (the Break route).
 - **Faerie Fire** outlines the Hounds but does not make them solid.
@@ -107,7 +108,7 @@ Late 40s. She **answers questions about the manor only while performing a task**
 **Secret.** She is Mordax's **first victim**, a woman who once stood on his stage and was staged here as a maid. Her true name is scratched on the underside of a chair in the Hidden Chamber: **Edith Marrow**. [NEW, DECIDED] She cannot ask to be freed.
 
 **Freeing her takes two parts** (either alone helps her; both free her):
-1. **Her name.** (Kurield's Detect Thoughts or Zone of Truth can help her, but she must still hear it spoken.) Say "Edith Marrow" to her.
+1. **Her name.** (Detect Thoughts or Zone of Truth would help, but nobody has them prepared as of Oct 16; she must still hear it spoken.) Say "Edith Marrow" to her.
 2. **Her task.** The dinner she never served the heirs: **set and serve a table for six in the Dining Room**. Kurield's **Unseen Servant** can lay the table and **Purify Food and Drink** makes the meal safe (both free, once per long rest). Plates and silver are in the Kitchen and Trophy Room; wine in the Wine Cellar; six candles; a chair pulled out for her. She stops and sits.
 
 Freed: *Luna lowers her hands. Her accent changes. She says "Thank you for dinner" and is gone.* **Stage Fill -1.** She is an Echo in Session 4.
@@ -239,7 +240,7 @@ Use **"The House Keeps Them"** (Absence Protocol): the character is hung in the 
 
 ## 14. Open for you
 
-1. **Dominic's** D&D Beyond handle (he plays Wolfe), and Wolfe's sheet shows no Healer's Kit (the Healer feat needs one).
-2. Alignment for Hetfield. Butch is Lawful Evil (Ashford's bargain goes to him); Hetfield's is unknown; Sassy, Kurield, Rivet and Wolfe are Chaotic Good.
-3. Kurield's sheet lists no equipment and AC 11; ask him to finish it.
+1. **Sheets refreshed Oct 16** (see `Party_Roster.md`): Wolfe has his Healer's Kit (handle now domfraracio); Hetfield is Chaotic Good; Kurield is Neutral Good. Butch is Lawful Evil (Ashford's bargain goes to him).
+2. Butch's player and handle are still unknown (the sheet is under your account).
+3. Kurield now carries a chain shirt, shield and mace but **has none equipped (sheet AC 11)**. Equipped, he would be AC 16. Ask Thad before play.
 4. (Resolved from Rivet's sheet.) Rivet chooses Flamethrower, Force Ballista or Protector each time he activates the cannon (Cam confirmed Oct 12). The Flamethrower relights a hearth as a bonus action; the cannon lasts an in-game hour, then costs a slot to recreate.

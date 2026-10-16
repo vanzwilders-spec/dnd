@@ -10,7 +10,7 @@
 - [ ] Hazard pips ready (T1-T6, G1, G2, G5-G8, U1-U4, C1-C6).
 - [ ] Handouts open: six invitations, the will, guest list (`Session1_Handouts.html`).
 - [ ] Session 0 answers in hand (`Session0_Questions.md`): lines and veils, darkvision, Butch's player and handle.
-- [ ] Open items settled: Kurield's gear and AC, Wolfe's Healer's Kit, Hetfield's alignment.
+- [ ] Open items: Kurield must **equip** his chain shirt and shield (sheet AC 11, should be 16). Butch's player. (Wolfe's Healer's Kit and Hetfield's alignment are done.)
 - [ ] **Test once:** do AboveVTT token notes make dice clickable?
 
 ## Tracking panel (keep visible)
@@ -60,7 +60,8 @@
 - Harwick is **not** immune to frightened; Turn Undead works on him.
 - Ashford's bargain: he gives Butch the Master Bedroom key to burn the journal. If it burns, Stage Fill +1 (Ashford escapes with his secret).
 - **Milo's sword (stopgap):** shortsword stats, magical, Sanctuary 1/day without a slot.
-- Silence covers part of the Servant's Passage, not all of it.
+- Sleep fails on Harwick, the Hounds and the Collector (immune to exhaustion); it works on Ashford.
+- Nobody has Silence, Detect Thoughts or Zone of Truth prepared (Oct 16 sheets). If one turns up, Silence covers only part of the Servant's Passage.
 - Faerie Fire outlines the Hounds but does not make them solid.
 - Milo (bound to Hetfield's sword; near a lit hearth or when the sword is drawn): Hounds hesitate, T6 solved if she walks the keys, Release has advantage if she flops at Harwick's feet.
 - Nothing kills outright. A hazard drop to 0 HP means the Twins pull the character through a passage; they wake in another room at 1 HP.

@@ -1,5 +1,19 @@
 # Party Roster: Halloween 2026 ("No Shot.....In hell")
 
+## Sheet refresh, Oct 16 (pulled from D&D Beyond before Session 1; supersedes older details below)
+
+| Character | HP | AC | Darkvision | Alignment | What changed since Oct 12 |
+|---|---|---|---|---|---|
+| Hetfield | 25 | 14 | no | **Chaotic Good** (was blank) | Dancing Lights swapped for **Light**; carries 2 daggers (not six); 33 gp |
+| Butch | 21 | 15 | 60 ft | Lawful Evil | No changes (last edit Oct 12). Player still under the DM's account |
+| Kurield | 24 | **11** | no | **Neutral Good** (was CG) | Gear added: chain shirt, shield, mace, emblem (holy symbol), 2 lamps, 5 oil, holy water, cook's utensils, iron pot, 33 gp. **Armor and shield not equipped** (would be AC 16). Prepared spells now: Cure Wounds, Goodberry, Purify Food and Drink, Prayer of Healing, Lesser Restoration, Sleep (no Silence, Detect Thoughts, Zone of Truth or Detect Magic). Mark of Hospitality magic unchanged. Bonds/ideals/flaws written |
+| Sassy | 24 | 14 | 60 ft | Chaotic Good | Backstory written. **Her most prized possession is her leatherworker's tools**, a gift from the leatherworker who took her in: a candidate for her signature item |
+| Rivet | 30 | 18 | no | Chaotic Good | Personality written; **his Eldritch Cannon is named "Thunk"** and he treats it as a companion. Still carries Shield +1 and Wand of the War Mage +1 (no Goggles of Night yet) |
+| Wolfe | 42 | 12 | no | Chaotic Good | **Healer's Kit added.** D&D Beyond handle now **domfraracio**. Personal possession: **his family's signet ring**, proof of the blood behind his wild magic (signature item candidate) |
+
+Every sheet also lists "Dark Bargain", "Character Threads" and "Runestones" as features; they appear on all six, so they look campaign-wide rather than player picks. Worth a glance to confirm they are intended.
+
+
 *DM only. Source: your D&D Beyond campaign page (screenshot) and the six character sheet PDFs (all received Oct 12). Update this file as sheets change.*
 
 ## The party (6 players; all 6 characters known)
