@@ -2,7 +2,7 @@
 
 *DM only. [DECIDED, Oct 12] Monsters are **custom** and tracked here and in DM's Ark, not pulled from 5e.tools. AboveVTT needs only an icon, a health pool and (nice to have) AC. **Anything the players can carry or keep (loot, scrolls, items) must come from verified source material.** Nothing below hands out a player item; the Collector only *holds* what the party already owns.*
 
-**Party at a glance** (for tuning): HP 25 / 21 / 24 / 24 / 30 / 42. AC 14 / 15 / 14 / 11 / 18 / 12. Proficiency +2. Save DCs of 12 to 13 are fair; 15 is harsh for most of them. Rough party damage on a good round: 35 to 50.
+**Party at a glance** (for tuning): HP 25 / 21 / 24 / 24 / 30 / 42. AC 14 / 15 / 14 / 16 / 18 / 12 (Kurield with chain shirt and shield, Oct 16). Proficiency +2. Save DCs of 12 to 13 are fair; 15 is harsh for most of them. Rough party damage on a good round: 35 to 50.
 
 **Conventions.** To-hit and damage are written as ready-to-paste dice. Macro lines are plain dice expressions (`1d20+5`). Whether AboveVTT turns text in a token's notes into clickable rolls is **untested**; try one on the Collector token before Friday, and if it does not, paste the lines into the chat as `/roll` commands instead.
 

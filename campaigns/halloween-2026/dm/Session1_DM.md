@@ -242,5 +242,5 @@ Use **"The House Keeps Them"** (Absence Protocol): the character is hung in the 
 
 1. **Sheets refreshed Oct 16** (see `Party_Roster.md`): Wolfe has his Healer's Kit (handle now domfraracio); Hetfield is Chaotic Good; Kurield is Neutral Good. Butch is Lawful Evil (Ashford's bargain goes to him).
 2. Butch is played by **Viktor** (D&D Beyond handle `_Unnamed_`).
-3. Kurield now carries a chain shirt, shield and mace but **has none equipped (sheet AC 11)**. Equipped, he would be AC 16. Ask Thad before play.
+3. Kurield: chain shirt and shield equipped before play (AC 16, Oct 16).
 4. (Resolved from Rivet's sheet.) Rivet chooses Flamethrower, Force Ballista or Protector each time he activates the cannon (Cam confirmed Oct 12). The Flamethrower relights a hearth as a bonus action; the cannon lasts an in-game hour, then costs a slot to recreate.
