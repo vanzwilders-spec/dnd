@@ -45,17 +45,21 @@
 | **Collector** | 45 | 17 | Slam +4 x2; both hit the same target = takes one item |
 | **Hounds x3** | 16 | 13 | Chill Bite +5 (`1d6+3`, CON DC 11, STR -1 until rest); hunt by sound |
 | **Twins** | 14 | 12 | Cold Hands +4; games, not fights |
-| **Ashford** | 18 | 11 | coward; Master Bedroom key; redeemable |
+| **Ashford** | 18 | 11 | coward; Master Bedroom key (may give it to Butch); redeemable |
 
 ## Endings
 
 - **Fire.** All eight hearths lit (the Flues). Stage Fill -1 at your discretion.
 - **Release.** Name his grief and tell him he can stop (DC 14, advantage if Luna is free). Stage Fill -1.
-- **Break.** Take him to 0 HP; he retreats weeping. Turn Undead (DC 13) makes him flee. Stage Fill 0.
+- **Break.** Take him to 0 HP; he retreats weeping. Turn Undead (DC 13) works fully: Frightened and Incapacitated, flees; ends if he takes damage. Stage Fill 0.
 
 ## Rulings to remember
 
+- **NPC numbers stay hidden.** AC, HP and DCs are for you; tell players only if the fiction or a spell reveals them.
 - Only real hearth fire stops Harwick; magic light does not.
+- Harwick is **not** immune to frightened; Turn Undead works on him.
+- Ashford's bargain: he gives Butch the Master Bedroom key to burn the journal. If it burns, Stage Fill +1 (Ashford escapes with his secret).
+- **Milo's sword (stopgap):** shortsword stats, magical, Sanctuary 1/day without a slot.
 - Silence covers part of the Servant's Passage, not all of it.
 - Faerie Fire outlines the Hounds but does not make them solid.
 - Milo (bound to Hetfield's sword; near a lit hearth or when the sword is drawn): Hounds hesitate, T6 solved if she walks the keys, Release has advantage if she flops at Harwick's feet.

@@ -19,7 +19,7 @@
 | **Speed** | 0 ft walking, fly 40 ft (hover) |
 | **Abilities** | STR 6, DEX 16, CON 12, INT 11, WIS 13, CHA 14 |
 | **Saves** | WIS +3, CHA +4 |
-| **Resist / immune** | Resist acid, cold, fire, lightning, thunder; **immune** necrotic, poison, charmed, frightened, grappled, restrained, exhaustion |
+| **Resist / immune** | Resist acid, cold, fire, lightning, thunder; **immune** necrotic, poison, charmed, grappled, restrained, exhaustion. **Not immune to frightened** (Oct 16), so Turn Undead works fully |
 | **Senses** | Darkvision 60 ft, passive Perception 11 |
 | **Challenge** | About CR 2 (working target) |
 
@@ -48,7 +48,7 @@
 
 - **Fire.** All eight hearths lit: he cannot enter or cross any threshold, and at dawn his service ends.
 - **Release.** A Persuasion or Performance check (DC 14) after the party names his grief ("you can set the tray down") and gives him leave to stop. Advantage if they have freed Luna, and advantage if the calico spirit Milo is allowed to flop at his feet (not cumulative). He sets down the tray and fades.
-- **Break.** Reduced to 0 HP, he does not die: he retreats weeping into the cellar. Turn Undead (Kurield's Channel Divinity, DC 13 WIS save) makes him flee for 1 minute.
+- **Break.** Reduced to 0 HP, he does not die: he retreats weeping into the cellar. Turn Undead (Kurield's Channel Divinity, DC 13 WIS save): Frightened and Incapacitated for 1 minute, and he flees; it ends early if he takes damage.
 
 **Macros**
 
@@ -116,6 +116,7 @@
 **Traits**
 
 - **Hunts by Sound.** Each hound has advantage on Perception checks that rely on hearing. A noise made within 60 ft draws all three hounds to its source. A **Silence** sphere hides sounds made inside it.
+- **Refuge.** The hounds never enter the Dining Room while its hearth burns.
 - **Reforming.** A hound reduced to 0 HP dissolves and **reforms in the cellar after one hour**. They cannot be destroyed.
 
 **The silence puzzle.** To cross the Servant's Passage unheard, each character makes a Stealth check (**DC 13**, advantage with a Silence sphere covering them, disadvantage in metal armor or when carrying a lit torch of oil). One loud failure alerts the hounds. A clever lure works instead: Butch's bell thrown far away, a coin tossed, Hetfield's bandore in another room.

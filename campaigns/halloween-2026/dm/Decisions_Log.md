@@ -30,6 +30,10 @@
 | Session 1 prep | No fixed hour blocks. Ordered steps instead (see `Session1_Readiness_Review.md`). | Oct 12 |
 | Deliverables | `.md` for Scribe / DM's Ark, `.html` for players and DM. Maps as PNG. | Oct 12 |
 | Files location | `C:\Users\karva\Desktop\dnd\Halloween 2026` | Oct 12 |
+| Hidden NPC mechanics | NPC and monster numbers (AC, HP, DCs, CR) are never in read-aloud text. DM-reference notes are fine. Players learn them only if they ask in-fiction or a spell or feature reveals them. Doubly true for anything they might fight. | Oct 16 |
+| Harwick and Turn Undead | Harwick is **not** immune to frightened; Turn Undead works fully on him. | Oct 16 |
+| Ashford's bargain | Ashford gives the self-interested character (Butch) the Master Bedroom key and asks them to burn the journal, promising to strike their name from the guest list (a lie). Replaces the nonexistent "cellar key." | Oct 16 |
+| Milo's sword (stopgap) | For Session 1 only: shortsword stats, counts as magical, Sanctuary 1/day without a slot, plus the Milo beats in the script. Final mechanics after the session. | Oct 16 |
 
 ## Defaults in force (not yet confirmed)
 

@@ -4,6 +4,8 @@
 
 **Tags:** **[ORIGINAL]** from your DM Guide, **[NEW]** my addition, **[DECIDED]** your Oct 12 answers. Read-aloud text is in *italics*. Monster numbers are in `Session1_Statblocks.md` (custom blocks; they win over any figure here).
 
+**Hidden mechanics.** NPC and monster numbers (AC, HP, DCs, CR) are for you only. They appear here as *(DM ref: ...)* notes and are never part of read-aloud text. Tell players a number only if they ask in a way the fiction allows or a spell or feature reveals it.
+
 ---
 
 ## 0. One-page summary
@@ -55,7 +57,7 @@ A grandfather clock in the Entry Hall and a mantel clock in the McTavern chime t
 | **1:00** | ~45 min in | **Entry Hall, Kitchen** | **Harwick wakes** |
 | **3:00** | ~95 min in | **Drawing Room, Study** | Hounds roam the ground floor |
 | **4:30** | ~135 min in | **Master Bedroom, Trophy Room, Portrait Gallery** | Only the Dining Room is lit; Harwick hunts |
-| **Dawn** | ~180 min in | all | Harwick's service ends one way or another |
+| **Dawn** | ~180 min in | none left (the Dining Room still burns) | Harwick's service ends one way or another |
 
 Chime when it happens and move the token. A gutted hearth can be **relit** with fire (a cannon flamethrower, a torch, a spell). A relit hearth is safe again. Relighting is how the party fights the clock. The Dining Room hearth never goes out.
 
@@ -63,9 +65,9 @@ Chime when it happens and move the token. A gutted hearth can be **relit** with 
 
 **Read aloud.** *You are in a dining room you have never seen. The table is set for a feast nobody has touched. A man in an immaculate suit is mid-sentence: "...and so, by the terms of the will, the estate passes to he who endures." Rain hammers the windows. Each of you is holding a sealed invitation you do not remember being given.*
 
-**Milo's sword.** [NEW, DECIDED, Oct 12] Beside the refuge hearth lies an old sword, laid flat on the hearthstone as if asleep, its blade warm to the touch. The hilt is inlaid orange, black and white, with two small green stones in the guard. It is Hetfield's grandfather's sword, and it is Hetfield's: kept warm by the fire, waiting for him. It hums when he takes hold of it, and when ignored it tips over flat (the Milo flop). This **sets the stage**: the house leaves things by the fire for the guests it is courting, and the other characters' signature weapons are found in the house later. Mechanics are still homebrew in draft (see the weapons notes).
+**Milo's sword.** [NEW, DECIDED, Oct 12] Beside the refuge hearth lies an old sword, laid flat on the hearthstone as if asleep, its blade warm to the touch. The hilt is inlaid orange, black and white, with two small green stones in the guard. It is Hetfield's grandfather's sword, and it is Hetfield's: kept warm by the fire, waiting for him. It hums when he takes hold of it, and when ignored it tips over flat (the Milo flop). This **sets the stage**: the house leaves things by the fire for the guests it is courting, and the other characters' signature weapons are found in the house later. **For tonight (stopgap, Oct 16):** it uses the shortsword's stats, counts as a **magical weapon**, and casts **Sanctuary once per day without a slot**. Milo's beats below are its only other effects. Final mechanics come after the session (see `Signature_Items.md`).
 
-**Ashford.** [ORIGINAL] Solicitor, 60s. Has done "will readings" three times before and always survives. Cheerful, rehearsed, a little too ready to answer. He is the Noble (CR 1/8) with a hidden Bardic Inspiration (1/day). He **carries the Master Bedroom key** and does not offer it. He explains: the bridge is out, nobody leaves, the house is "occupied," and the family "wished to meet you."
+**Ashford.** [ORIGINAL] Solicitor, 60s. Has done "will readings" three times before and always survives. Cheerful, rehearsed, a little too ready to answer. He has a hidden Bardic Inspiration (1/day). *(DM ref: 18 HP, AC 11; Statblocks section 5.)* He **carries the Master Bedroom key** and does not offer it. He explains: the bridge is out, nobody leaves, the house is "occupied," and the family "wished to meet you."
 
 **The mirror.** [ORIGINAL] After Ashford finishes, the lights die. The gilded mirror over the sideboard shows the room lit. Only the reflection smiles.
 
@@ -85,7 +87,7 @@ Let the party roam. The goals are: isolation (split them), cooperation (the Flue
 
 ### The Collector [ORIGINAL] (Entry Hall, upper floor, Trophy Room)
 
-Animated Armor (CR 1, 33 HP, AC 18). **Not a damage fight.** [DECIDED, G5] Custom trait **Collect**: when it hits the same target twice in a round (or two rounds), it removes one worn or carried item, and clanks off toward the Trophy Room. Stolen gear is **displayed in the Trophy Room** with previous guests' belongings and **can be won back**. Terrifying and absurd: the armor is polite and proud of its collection. Sassy's duel lives here.
+*(DM ref: 45 HP, AC 17; Statblocks section 2.)* **Not a damage fight.** [DECIDED, G5] Custom trait **Collect**: when **both Slams in one turn hit the same creature**, it takes one item (never armor, a main weapon or a spellcasting focus) and clanks off toward the Trophy Room. Stolen gear is **displayed in the Trophy Room** with previous guests' belongings and **can be won back**. Terrifying and absurd: the armor is polite and proud of its collection. Sassy's duel lives here.
 
 ### The Revenant Hounds [ORIGINAL] x3 (Servant's Passage and Wine Cellar approach)
 
@@ -94,13 +96,13 @@ Shadow stat block, translucent dogs. **They hunt by sound.** [ORIGINAL] The part
 **Table rulings** [NEW, proposed]:
 - **Silence** (Kurield, 2nd level) lets the party cross a 20-ft stretch unheard, but it is concentration and a fixed sphere, so it covers part of the passage, not all of it. A clever, expensive solution; allow it.
 - **Continual Flame** and other magic light do not stop Harwick. Only real hearth fire does.
-- **Turn Undead** on Harwick makes him flee for a minute (the Break route).
+- **Turn Undead** works fully on Harwick [DECIDED, Oct 16]: he is **not** immune to frightened. On a failed save he is Frightened and Incapacitated for 1 minute and flees; it ends early if he takes damage (the Break route).
 - **Faerie Fire** outlines the Hounds but does not make them solid.
 - **Milo** (Hetfield's sword): animals knew not to mess with Milo. When Hetfield draws the sword near the Hounds, they hesitate; give them disadvantage on their first attack against him in an encounter. [NEW, DECIDED]
 
 ### Luna [ORIGINAL, CHANGED] (Kitchen)
 
-Late 40s. She **answers questions about the manor only while performing a task** (peeling, stirring, polishing). Stop her and she stops talking. She knows everything. Resistance to psychic, immune to fear.
+Late 40s. She **answers questions about the manor only while performing a task** (peeling, stirring, polishing). Stop her and she stops talking. She knows everything. *(DM ref: immune to psychic, frightened and charmed.)*
 
 **Secret.** She is Mordax's **first victim**, a woman who once stood on his stage and was staged here as a maid. Her true name is scratched on the underside of a chair in the Hidden Chamber: **Edith Marrow**. [NEW, DECIDED] She cannot ask to be freed.
 
@@ -124,9 +126,9 @@ Win both games and the Twins whisper the **rhyme** one line at a time at each li
 
 Ashford **can be redeemed if offered forgiveness**. [ORIGINAL] His deal with Mordax: his survival for delivering guests. He is a coward, not a villain. Eloquence Bard's moment.
 
-**His private offer** [NEW, for mixed alignments]: to the character he thinks most self-interested, he whispers: *"I can have your name struck from the guest list. The house forgets you. Bring me the cellar key."* It is a trap that never forces anyone.
+**His private offer** [DECIDED, Oct 16; for mixed alignments]: to the character he thinks most self-interested (Butch, by default), he presses the **Master Bedroom key** into their hand and whispers: *"There's a journal in the master's room. Burn it, and I'll have your name struck from the guest list. The house forgets you."* It is a temptation, never a compulsion. If the journal burns, the evidence against Ashford is gone (Ashford escapes with his secret: Stage Fill +1) and the guest list keeps all six names anyway: Ashford cannot strike anyone.
 
-**Master Bedroom** (locked): the key is on Ashford. Inside, the **journal**: the earlier "will readings" and the dates each family disappeared. It is the evidence that unmasks him.
+**Master Bedroom** (locked): the key is on Ashford until he hands it over in his private offer, or is talked or pickpocketed out of it. Inside, the **journal**: the earlier "will readings" and the dates each family disappeared. It is the evidence that unmasks him.
 
 ### The Study: Fragment #1 [ORIGINAL]
 
@@ -175,7 +177,7 @@ He never fights. If attacked, he fades as the mirror did.
 
 **The Hidden Chamber.** Luna's chair, with **Edith Marrow** scratched underneath. A cold room that holds the evidence of the first victim. The Portrait Gallery's eyes point here.
 
-**The Furnace Room.** The boiler and the **damper panel**. This is where the Fire ending is made. It has its own warmth: anyone here is safe from Harwick, too.
+**The Furnace Room.** The boiler and the **damper panel**. This is where the Fire ending is made. The boiler is warm, but it is **not a refuge**: Harwick can enter (the Dining Room is the only refuge).
 
 **Ashford's secret nearly out.** The journal ties him to the missing families. If confronted, he breaks down.
 
@@ -186,8 +188,8 @@ At **4:30**, only the Dining Room hearth is lit. Harwick, the Grieving Butler, n
 **Harwick.** [ORIGINAL, CHANGED] Specter-based, scaled to about **CR 2** [DECIDED]. Flies. Mission: **preserve the guests** by dragging them to the cellar, not killing. He weeps as he does it. **He cannot enter a room with a lit hearth.**
 
 - **Offer.** He greets the party: *"May I be of service?"* If refused, he attacks.
-- **I Must Serve.** DC 13 Strength save or grappled and pulled toward the cellar. The Barbarian can hold the Servant's Passage chokepoint.
-- **Life Drain** reduces HP maximum until a rest. Against d8 characters it is the main danger.
+- **I Must Serve.** Strength save or grappled and pulled toward the cellar. *(DM ref: STR DC 13, drag 15 ft.)* The Barbarian can hold the Servant's Passage chokepoint.
+- **Life Drain:** on a failed CON save the target's HP maximum drops by half the damage until a **long rest**, so for tonight it lasts the whole session. Against d8 characters it is the main danger. *(DM ref: +5 to hit, 2d6+3 necrotic, CON DC 12.)*
 
 **Three endings** [DECIDED]. Each ends the night at dawn.
 
@@ -195,7 +197,7 @@ At **4:30**, only the Dining Room hearth is lit. Harwick, the Grieving Butler, n
 |---|---|---|---|
 | **Fire** | All eight hearths lit (the Flues, or relighting by hand). Harwick cannot cross any threshold. | The house blazing, the storm breaking | -1 (heroic/funny) at your discretion |
 | **Release** | Persuade or forgive him: he serves the house, not Mordax. He wants to be told he can stop. **Advantage if Milo is allowed to flop at his feet** (a butler can set down his tray for a cat); not cumulative with other advantage. | Harwick sets down his tray and fades | -1 |
-| **Break** | A non-lethal fight drives him off | He retreats weeping into the cellar | 0 |
+| **Break** | A non-lethal fight drives him off, or Turn Undead | He retreats weeping into the cellar | 0 |
 
 ## 9. The grounds: the edge of the world [DECIDED]
 

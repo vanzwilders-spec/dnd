@@ -20,7 +20,7 @@
 
 | Character | Carries now | Signature item | 1/day spell | Seed of the story |
 |---|---|---|---|---|
-| Hetfield (Jeff) | grandfather's sword | **Milo's sword** (decided: found by the refuge hearth) | Sanctuary (draft) | The cat's spirit; Nine Lives and the rest still to settle |
+| Hetfield (Jeff) | grandfather's sword | **Milo's sword** (decided: found by the refuge hearth; Session 1 stopgap: shortsword stats, magical) | Sanctuary (stopgap for Session 1) | The cat's spirit; Nine Lives and the rest still to settle |
 | Butch | two daggers, hand crossbow | **a dagger** ("Magpie's Tooth") | Fog Cloud | Likes shiny things; the dagger glints when something worth taking is near |
 | Sassy | rapier | **her rapier** | Feather Fall | Her family name is "still remembered"; the blade carries that legacy |
 | Kurield | holy symbol, shield (Thad's starting kit, unconfirmed) | **holy symbol or shield**, or a ladle from House Ghallanda | Heroism | Hospitality magic: a meal shared, a host's blessing |
